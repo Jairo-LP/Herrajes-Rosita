@@ -1,35 +1,92 @@
-const ICONS = {
-  horseshoe: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10C14 16 11 24 11 33c0 12 9 21 21 21s21-9 21-21c0-9-3-17-10-23"/><circle cx="17" cy="29" r="1.6" fill="currentColor" stroke="none"/><circle cx="15" cy="38" r="1.6" fill="currentColor" stroke="none"/><circle cx="20" cy="48" r="1.6" fill="currentColor" stroke="none"/><circle cx="47" cy="29" r="1.6" fill="currentColor" stroke="none"/><circle cx="49" cy="38" r="1.6" fill="currentColor" stroke="none"/><circle cx="44" cy="48" r="1.6" fill="currentColor" stroke="none"/></svg>`,
-  hinge: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="12" y="9" width="14" height="46" rx="3"/><rect x="38" y="9" width="14" height="46" rx="3"/><path d="M26 15h12M26 49h12"/><circle cx="19" cy="20" r="1.5" fill="currentColor" stroke="none"/><circle cx="19" cy="32" r="1.5" fill="currentColor" stroke="none"/><circle cx="19" cy="44" r="1.5" fill="currentColor" stroke="none"/><circle cx="45" cy="20" r="1.5" fill="currentColor" stroke="none"/><circle cx="45" cy="32" r="1.5" fill="currentColor" stroke="none"/><circle cx="45" cy="44" r="1.5" fill="currentColor" stroke="none"/></svg>`,
-  lock: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="28" width="32" height="27" rx="5"/><path d="M23 28v-7a9 9 0 0 1 18 0v7"/><circle cx="32" cy="40" r="3"/><path d="M32 43v5"/></svg>`,
-  handle: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="32" r="8"/><circle cx="18" cy="32" r="2"/><path d="M26 32h20a6 6 0 0 0 6-6v-4"/><path d="M46 22h10"/></svg>`,
-  screw: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M24 8h16l-2.5 34h-11L24 8Z"/><path d="M27 15h10M28 23h8M29 31h6"/><path d="M28 42h8l-4 14-4-14Z"/></svg>`,
-  keypad: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="15" y="8" width="34" height="48" rx="5"/><circle cx="24" cy="20" r="2" fill="currentColor" stroke="none"/><circle cx="32" cy="20" r="2" fill="currentColor" stroke="none"/><circle cx="40" cy="20" r="2" fill="currentColor" stroke="none"/><circle cx="24" cy="30" r="2" fill="currentColor" stroke="none"/><circle cx="32" cy="30" r="2" fill="currentColor" stroke="none"/><circle cx="40" cy="30" r="2" fill="currentColor" stroke="none"/><circle cx="24" cy="40" r="2" fill="currentColor" stroke="none"/><circle cx="32" cy="40" r="2" fill="currentColor" stroke="none"/><circle cx="40" cy="40" r="2" fill="currentColor" stroke="none"/><path d="M22 48h20"/></svg>`,
-  hydraulic: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="21" cy="32" r="10"/><circle cx="21" cy="32" r="3"/><path d="M31 32h17"/><path d="M48 21v22"/><rect x="53" y="17" width="4" height="30" rx="2"/></svg>`,
-  peephole: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="20"/><circle cx="32" cy="32" r="11"/><circle cx="32" cy="32" r="4" fill="currentColor" stroke="none"/><path d="M32 4v4M32 56v4M4 32h4M56 32h4"/></svg>`,
-  bolt: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="28" width="44" height="11" rx="5.5"/><path d="M46 28v-8a4 4 0 0 0-4-4H30"/><circle cx="26" cy="16" r="3"/><path d="M18 39v9M46 39v9"/></svg>`,
-  stop: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 54h32"/><path d="M20 54V40a12 12 0 0 1 24 0v14"/><circle cx="32" cy="24" r="4"/></svg>`,
-  padlock: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="28" width="36" height="28" rx="6"/><path d="M22 28v-8a10 10 0 0 1 20 0v8"/><circle cx="32" cy="40" r="3"/><path d="M32 43v6"/><path d="M14 38h36"/></svg>`,
-  hook: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 10v26a12 12 0 0 0 24 0v-6"/><circle cx="16" cy="8" r="3"/><path d="M40 30a6 6 0 0 0 12 0v-6"/></svg>`,
-};
-
+//CATALOGO DE PRODUCTOS FILTRADO  
 const products = [
-  { id: 1, name: 'Herradura decorativa para puerta', category: 'Herraduras', price: 8.5, oldPrice: 12.99, note: 'Acabado forjado a mano' },
-  { id: 2, name: 'Bisagra de acero inoxidable 4"', category: 'Bisagras', price: 3.25, oldPrice: 4.5, note: 'Acero inoxidable · 4 pulgadas' },
-  { id: 3, name: 'Cerradura de seguridad multipunto', category: 'Cerraduras', price: 49.9, oldPrice: 65, note: 'Tres puntos de anclaje' },
-  { id: 4, name: 'Manija de palanca negra mate', category: 'Manijas', price: 18.75, oldPrice: 24.99, note: 'Acabado negro mate' },
-  { id: 5, name: 'Kit de tornillos para bisagras', category: 'Tornillería', price: 6.9, oldPrice: 9.5, note: '50 unidades · acero zincado' },
-  { id: 6, name: 'Cerradura electrónica con teclado', category: 'Cerraduras', price: 89.99, note: 'Clave numérica y tarjeta', isNew: true },
-  { id: 7, name: 'Herradura magnética para puerta', category: 'Herraduras', price: 14.5, note: 'Cierre silencioso', isNew: true },
-  { id: 8, name: 'Bisagra hidráulica invisible', category: 'Bisagras', price: 27.9, note: 'Cierre automático suave', isNew: true },
-  { id: 9, name: 'Mirilla digital con cámara', category: 'Cerraduras', price: 72, note: 'Visión nocturna · pantalla LCD', isNew: true },
-  { id: 10, name: 'Pasador de embutir inoxidable', category: 'Herraduras', price: 11.2, note: 'Acero inoxidable satinado' },
-  { id: 11, name: 'Tope de puerta de acero', category: 'Accesorios', price: 5.4, note: 'Protege paredes y puertas' },
-  { id: 12, name: 'Candado de alta seguridad', category: 'Cerraduras', price: 22.3, note: 'Arco templado · 50 mm' },
-  { id: 13, name: 'Perchero de herradura', category: 'Accesorios', price: 9.99, note: 'Hierro forjado · 3 ganchos' },
-  { id: 14, name: 'Manija redonda de latón', category: 'Manijas', price: 13.6, note: 'Latón pulido · roseta 50 mm' },
-  { id: 15, name: 'Bisagra de libro 3" (par)', category: 'Bisagras', price: 7.8, note: 'Par de bisagras · 3 pulgadas' },
-  { id: 16, name: 'Herradura de pared vintage', category: 'Herraduras', price: 12.4, note: 'Estilo rústico envejecido' },
+  { id: 1, name: 'Lavabo',
+    category: 'Accesorios de Cocina', 
+    price: 8.5, oldPrice: 12.99, 
+    note: 'Acabado en acero inoxidable 304',
+    img: 'imgcat/lavabo.png',
+    icon: 'lavabo' },
+
+  { id: 2, name: 'Despensa de Cierre Lento', 
+    category: 'Accesorios de Cocina', 
+    price: 3.25, oldPrice: 4.5, 
+    img: 'imgcat/dcl.png',
+    note: 'Ancho: 385mm',
+    note:'Profundidad: 530mm',
+    note: 'Altura: 1320/1620mm' },
+
+  { id: 3, name: 'Columna Extraible', 
+    category: 'Accesorios de Cocina', 
+    img: 'imgcat/ce.png',
+    price: 49.9, oldPrice: 65, 
+    note: 'Tres puntos de anclaje' },
+
+  { id: 4, name: 'Despensa de Lujo de cierre lento', 
+    category: 'Manijas', 
+    price: 18.75, oldPrice: 24.99, 
+    img: 'imgcat/dl.png',
+    note: 'Acabado negro mate' },
+
+  { id: 5, name: 'Esquinero Magic cierre lento', 
+    category: 'Tornillería', 
+    price: 6.9, oldPrice: 9.5, 
+    img: 'imgcat/esquineros.png',
+    note: '50 unidades · acero zincado' },
+
+  { id: 6, name: 'Bandeja Oscilante de Cierre Lento', 
+    category: 'Cerraduras', 
+    price: 89.99, note: 'Clave numérica y tarjeta', 
+    img: 'imgcat/bandeja.png',
+    isNew: true },
+
+  { id: 7, name: 'Super Magic', 
+    category: 'Herraduras', 
+    img: 'imgcat/sm.png',
+    price: 14.5, 
+    note: 'Cierre silencioso', isNew: true },
+
+  { id: 8, name: 'Cesta Giratoria', 
+    category: 'Bisagras', price: 27.9, 
+    img: 'imgcat/cesta.png',
+
+    note: 'Cierre automático suave', isNew: true },
+
+  { id: 9, name: 'Mirilla digital con cámara', 
+    category: 'Cerraduras', 
+    price: 72, note: 'Visión nocturna · pantalla LCD', isNew: true },
+
+  { id: 10, name: 'Pasador de embutir inoxidable', 
+    category: 'Herraduras', 
+    price: 11.2, note: 'Acero inoxidable satinado' },
+
+  { id: 11, name: 'Tope de puerta de acero', 
+    category: 'Bisagras', price: 5.4, 
+    note: 'Protege paredes y puertas' },
+
+  { id: 12, name: 'Candado de alta seguridad', 
+    category: 'Cerraduras', 
+    price: 22.3, 
+    note: 'Arco templado · 50 mm' },
+
+  { id: 13, name: 'Perchero de herradura', 
+    category: 'Accesorios de Cocina', 
+    price: 9.99, 
+    note: 'Hierro forjado · 3 ganchos' },
+
+  { id: 14, name: 'Manija redonda de latón', 
+    category: 'Manijas', 
+    price: 13.6, 
+    note: 'Latón pulido · roseta 50 mm' },
+
+  { id: 15, name: 'Bisagra de libro 3" (par)', 
+    category: 'Bisagras', 
+    price: 7.8, 
+    note: 'Par de bisagras · 3 pulgadas' },
+
+  { id: 16, name: 'Herradura de pared vintage', 
+    category: 'Herraduras', 
+    price: 12.4, 
+    note: 'Estilo rústico envejecido' },
 ];
 
 const priceFormatter = new Intl.NumberFormat('es-EC', {
@@ -63,7 +120,7 @@ function cardTemplate(product) {
     <article class="product-card">
       <div class="product-media">
         ${badge}
-        <span class="product-icon">${ICONS[product.icon] || ICONS.horseshoe}</span>
+        <img class="product-img" src="${product.img || 'imgcat/placeholder.png'}" alt="${product.name}" loading="lazy">
       </div>
       <div class="product-body">
         <span class="product-category">${product.category}</span>
@@ -195,6 +252,8 @@ const chatInput = document.getElementById('chatInput');
 const defaultSuggestions = ['Ver promociones', 'Ver catálogo', 'Horario', 'Precios'];
 let chatStarted = false;
 
+//CHATBOT RULES
+
 const chatRules = [
   {
     keywords: ['promocion', 'promociones', 'oferta', 'ofertas', 'descuento', 'descuentos', 'rebaja', 'rebajas'],
@@ -203,6 +262,8 @@ const chatRules = [
     suggestions: ['Ver catálogo', 'Horario', 'Precios'],
     action: 'promos',
   },
+
+  {keywords : ['herrajes', 'dispone', 'tienen', 'venden', 'productos'], reply : 'Que no vez la pagina?.', suggestions : ['Ver catálogo', 'Promociones', 'Precios']},
   {
     keywords: ['bisagra', 'bisagras'],
     reply:
