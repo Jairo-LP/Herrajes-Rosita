@@ -4,50 +4,50 @@ const products = [
     category: 'Accesorios de Cocina', 
     price: 8.5, oldPrice: 12.99, 
     note: 'Acabado en acero inoxidable 304',
-    img: 'imgcat/lavabo.png',
+    img: 'imgcat/lavabo.jpg',
     icon: 'lavabo' },
 
   { id: 2, name: 'Despensa de Cierre Lento', 
     category: 'Accesorios de Cocina', 
     price: 3.25, oldPrice: 4.5, 
-    img: 'imgcat/dcl.png',
+    img: 'imgcat/dcl.jpg',
     note: 'Ancho: 385mm',
     note:'Profundidad: 530mm',
     note: 'Altura: 1320/1620mm' },
 
   { id: 3, name: 'Columna Extraible', 
     category: 'Accesorios de Cocina', 
-    img: 'imgcat/ce.png',
+    img: 'imgcat/ce.jpg',
     price: 49.9, oldPrice: 65, 
     note: 'Tres puntos de anclaje' },
 
   { id: 4, name: 'Despensa de Lujo de cierre lento', 
     category: 'Manijas', 
     price: 18.75, oldPrice: 24.99, 
-    img: 'imgcat/dl.png',
+    img: 'imgcat/dl.jpg',
     note: 'Acabado negro mate' },
 
   { id: 5, name: 'Esquinero Magic cierre lento', 
     category: 'Tornillería', 
     price: 6.9, oldPrice: 9.5, 
-    img: 'imgcat/esquineros.png',
+    img: 'imgcat/esquineros.jpg',
     note: '50 unidades · acero zincado' },
 
   { id: 6, name: 'Bandeja Oscilante de Cierre Lento', 
     category: 'Cerraduras', 
     price: 89.99, note: 'Clave numérica y tarjeta', 
-    img: 'imgcat/bandeja.png',
+    img: 'imgcat/bandeja.jpg',
     isNew: true },
 
   { id: 7, name: 'Super Magic', 
     category: 'Herraduras', 
-    img: 'imgcat/sm.png',
+    img: 'imgcat/sm.jpg',
     price: 14.5, 
     note: 'Cierre silencioso', isNew: true },
 
   { id: 8, name: 'Cesta Giratoria', 
     category: 'Bisagras', price: 27.9, 
-    img: 'imgcat/cesta.png',
+    img: 'imgcat/cesta.jpg',
 
     note: 'Cierre automático suave', isNew: true },
 
@@ -120,7 +120,7 @@ function cardTemplate(product) {
     <article class="product-card">
       <div class="product-media">
         ${badge}
-        <img class="product-img" src="${product.img || 'imgcat/placeholder.png'}" alt="${product.name}" loading="lazy">
+        <img class="product-img" src="${product.img || 'imgcat/placeholder.jpg'}" alt="${product.name}" loading="lazy">
       </div>
       <div class="product-body">
         <span class="product-category">${product.category}</span>
@@ -136,14 +136,6 @@ function cardTemplate(product) {
     </article>
   `;
 }
-
-const promoProducts = products.filter((product) => product.oldPrice);
-const newProducts = products.filter((product) => product.isNew);
-
-document.getElementById('promoGrid').innerHTML = promoProducts.map(cardTemplate).join('');
-document.getElementById('newGrid').innerHTML = newProducts.map(cardTemplate).join('');
-document.getElementById('promoCount').textContent = `${promoProducts.length} ofertas`;
-document.getElementById('newCount').textContent = `${newProducts.length} nuevos`;
 
 const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
 const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
@@ -174,15 +166,6 @@ tabs.forEach((tab, index) => {
     tabs[nextIndex].focus();
     switchTab(tabs[nextIndex].dataset.tab);
   });
-});
-
-document.getElementById('heroOffers').addEventListener('click', () => {
-  document.getElementById('ofertas').scrollIntoView({ behavior: 'smooth', block: 'start' });
-});
-
-document.getElementById('heroCatalog').addEventListener('click', () => {
-  switchTab('catalogo');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 const catalogGrid = document.getElementById('catalogGrid');
@@ -258,9 +241,8 @@ const chatRules = [
   {
     keywords: ['promocion', 'promociones', 'oferta', 'ofertas', 'descuento', 'descuentos', 'rebaja', 'rebajas'],
     reply:
-      'Tenemos ofertas activas con hasta 30% de descuento en herraduras decorativas, bisagras de acero y cerraduras multipunto. Te llevo a la pestaña de promociones.',
+      'Tenemos ofertas activas con hasta 30% de descuento en herraduras decorativas, bisagras de acero y cerraduras multipunto. Puedes verlas en la pestaña Catálogo.',
     suggestions: ['Ver catálogo', 'Horario', 'Precios'],
-    action: 'promos',
   },
 
   {keywords : ['herrajes', 'dispone', 'tienen', 'venden', 'productos'], reply : 'Que no vez la pagina?.', suggestions : ['Ver catálogo', 'Promociones', 'Precios']},
@@ -334,7 +316,7 @@ const chatRules = [
   {
     keywords: ['asesor', 'asesora', 'humano', 'persona', 'whatsapp', 'telefono', 'contacto', 'llamar', 'correo'],
     reply:
-      'Puedes hablar con un asesor por WhatsApp al +593 99 123 4567 o escribir a ventas@herraduras.com. Respondemos en horario de atención: L-V de 8:00 a 18:00 y sábados hasta las 13:00.',
+      'Puedes hablar con un asesor por WhatsApp al +593 99 752 5832 o escribir a herrajes_rosita@hotmail.com. Respondemos en horario de atención: L-V de 8:00 a 18:00 y sábados hasta las 13:00.',
     suggestions: ['Horario', 'Ubicación', 'Ver catálogo'],
   },
   {
@@ -429,9 +411,7 @@ function sendChatMessage(rawText) {
     addMessage(reply, 'bot');
     setQuickReplies(rule && rule.suggestions ? rule.suggestions : defaultSuggestions);
 
-    if (rule && rule.action === 'promos') {
-      switchTab('promos');
-    } else if (rule && rule.action === 'catalogo') {
+    if (rule && rule.action === 'catalogo') {
       switchTab('catalogo');
     }
   }, 700);
