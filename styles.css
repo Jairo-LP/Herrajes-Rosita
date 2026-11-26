@@ -12,7 +12,7 @@
   --green: #16a34a;
   --radius: 18px;
   --shadow-sm: 0 2px 10px rgba(17, 24, 39, 0.06);
-  --shadow-md: 0 18px 40px -18px rgba(17, 24, 39, 0.3);
+  --shadow-md: 0 18px 40px -18px rgba(105, 127, 174, 0.667);
   --max: 1180px;
   --font: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
 }
@@ -36,13 +36,11 @@ body {
   line-height: 1.5;
 }
 
-img,
-svg {
+img, svg {
   display: block;
 }
 
-button,
-input,
+button, input,
 select {
   font-family: inherit;
 }
@@ -227,25 +225,18 @@ main {
   }
 }
 
-.hero {
-  display: grid;
-  grid-template-columns: 1.18fr 0.82fr;
-  gap: 22px;
-  align-items: stretch;
-}
-
-.hero-copy {
+.about-hero {
   position: relative;
   overflow: hidden;
   border-radius: 26px;
   padding: clamp(24px, 4vw, 44px);
   color: #ffffff;
   background:
-    radial-gradient(120% 120% at 100% 0%, rgba(249, 115, 22, 0.45), transparent 50%),
-    linear-gradient(135deg, #111827, #1f2937 58%, #374151);
+    radial-gradient(120% 120% at 100% 0%, rgba(186, 124, 80, 0.939), transparent 50%),
+    linear-gradient(135deg, #7988aa, #3f4b5b 58%, #1c283c);
 }
 
-.hero-copy::after {
+.about-hero::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -255,7 +246,7 @@ main {
   pointer-events: none;
 }
 
-.hero-copy > * {
+.about-hero > * {
   position: relative;
   z-index: 1;
 }
@@ -275,26 +266,19 @@ main {
   text-transform: uppercase;
 }
 
-.hero-copy h1 {
+.about-hero h1 {
   margin: 18px 0 12px;
   font-size: clamp(1.85rem, 3.4vw, 2.7rem);
   line-height: 1.06;
   letter-spacing: -0.03em;
 }
 
-.hero-copy p {
+.about-hero p {
   margin: 0;
-  max-width: 46ch;
+  max-width: 60ch;
   color: #d1d5db;
   font-size: 0.96rem;
   line-height: 1.65;
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 24px;
 }
 
 .btn {
@@ -337,126 +321,6 @@ main {
 
 .btn-ghost:hover {
   background: rgba(255, 255, 255, 0.1);
-}
-
-.hero-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 26px;
-  margin-top: 30px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
-}
-
-.hero-meta div {
-  display: flex;
-  flex-direction: column;
-}
-
-.hero-meta strong {
-  font-size: 1rem;
-  letter-spacing: -0.01em;
-}
-
-.hero-meta span {
-  font-size: 0.72rem;
-  color: #9ca3af;
-}
-
-.hero-deal {
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 12px;
-  padding: 28px;
-  border-radius: 26px;
-  border: 1px solid var(--line);
-  background: var(--surface);
-  box-shadow: var(--shadow-sm);
-}
-
-.hero-deal::before {
-  content: "";
-  position: absolute;
-  width: 260px;
-  height: 260px;
-  right: -110px;
-  top: -110px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(249, 115, 22, 0.22), transparent 65%);
-  pointer-events: none;
-}
-
-.deal-tag {
-  position: relative;
-  align-self: flex-start;
-  padding: 6px 11px;
-  border-radius: 999px;
-  background: var(--primary-soft);
-  color: var(--primary-deep);
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.deal-number {
-  position: relative;
-  font-size: clamp(3.2rem, 7vw, 4.8rem);
-  font-weight: 800;
-  line-height: 0.9;
-  letter-spacing: -0.06em;
-  color: var(--primary);
-}
-
-.deal-number small {
-  font-size: 1.5rem;
-  letter-spacing: 0;
-}
-
-.deal-caption {
-  position: relative;
-  margin: 0;
-  font-size: 0.86rem;
-  color: var(--muted);
-  line-height: 1.55;
-}
-
-.deal-list {
-  position: relative;
-  list-style: none;
-  margin: 4px 0 0;
-  padding: 0;
-  display: grid;
-  gap: 8px;
-}
-
-.deal-list li {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #374151;
-}
-
-.deal-list li::before {
-  content: "";
-  width: 7px;
-  height: 7px;
-  border-radius: 2px;
-  background: var(--primary);
-  transform: rotate(45deg);
-  flex: none;
-}
-
-.deal-note {
-  position: relative;
-  margin-top: 6px;
-  font-size: 0.7rem;
-  color: #9ca3af;
 }
 
 .trust {
@@ -502,9 +366,67 @@ main {
   height: 20px;
 }
 
-#ofertas,
-#novedades {
+#historia,
+#sucursales,
+#horarios {
   scroll-margin-top: 132px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.about-card {
+  padding: 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.about-card h2 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.about-card p {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.about-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.about-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.about-list strong {
+  color: var(--ink);
+}
+
+.about-list a {
+  color: var(--primary-deep);
+  text-decoration: none;
+}
+
+.about-list a:hover {
+  text-decoration: underline;
 }
 
 .section-head {
@@ -713,20 +635,6 @@ main {
   background: #f9fafb;
   font-size: 0.85rem;
   color: var(--ink);
-}
-
-.select-field select {
-  padding: 11px 34px 11px 12px;
-  border-radius: 10px;
-  border: 1px solid var(--line);
-  background: #f9fafb;
-  font-size: 0.85rem;
-  color: var(--ink);
-  cursor: pointer;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237a7166' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 12px center;
 }
 
 .search-field input:focus,
@@ -1157,31 +1065,6 @@ noscript {
 }
 
 @media (max-width: 960px) {
-  .hero {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-deal {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    column-gap: 24px;
-  }
-
-  .deal-number {
-    grid-row: span 2;
-    font-size: 4rem;
-  }
-
-  .deal-caption {
-    align-self: end;
-  }
-
-  .deal-list,
-  .deal-note {
-    grid-column: 1 / -1;
-  }
-
   .footer-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -1206,12 +1089,9 @@ noscript {
     font-size: 0.8rem;
   }
 
-  .trust {
+  .trust,
+  .about-grid {
     grid-template-columns: 1fr;
-  }
-
-  .hero-meta {
-    gap: 18px;
   }
 
   .section-head {
@@ -1229,12 +1109,12 @@ noscript {
   }
 
   .product-icon {
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
   }
 
   .product-name {
-    font-size: 0.88rem;
+    font-size: 0.85rem;
   }
 
   .catalog-toolbar {
