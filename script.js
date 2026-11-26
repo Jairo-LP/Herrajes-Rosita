@@ -543,7 +543,6 @@ const chatRules = [
     action: 'promos',
   },
 
-  {keywords : ['herrajes', 'dispone', 'tienen', 'venden', 'productos'], reply : 'Que no vez la pagina?.', suggestions : ['Ver catálogo', 'Promociones', 'Precios']},
   {
     keywords: ['bisagra', 'bisagras'],
     reply:
