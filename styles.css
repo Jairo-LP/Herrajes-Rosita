@@ -367,7 +367,6 @@ main {
 }
 
 #historia,
-#sucursales,
 #horarios {
   scroll-margin-top: 132px;
 }
@@ -688,7 +687,7 @@ main {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-columns: 1.4fr 1fr 1.4fr 1fr;
   gap: 28px;
   padding: 38px 0 28px;
 }
@@ -726,6 +725,22 @@ main {
 
 .footer-list a:hover {
   color: var(--primary-deep);
+}
+
+.footer-branch-list li {
+  line-height: 1.5;
+}
+
+.footer-branch-list strong {
+  color: var(--ink);
+}
+
+.footer-branch-list a {
+  color: var(--primary-deep);
+}
+
+.footer-branch-list a:hover {
+  text-decoration: underline;
 }
 
 .footer-bottom {
