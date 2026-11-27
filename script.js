@@ -2,14 +2,14 @@
 const products = [
   { id: 1, name: 'Lavabo',
     category: 'Accesorios de Cocina', 
-    price: 8.5, oldPrice: 12.99, 
+    price: 8.5, 
     note: 'Acabado en acero inoxidable 304',
     img: 'imgcat/lavabo.jpg',
     icon: 'lavabo' },
 
   { id: 2, name: 'Despensa de Cierre Lento', 
     category: 'Accesorios de Cocina', 
-    price: 3.25, oldPrice: 4.5, 
+    price: 3.25, 
     img: 'imgcat/dcl.jpg',
     note: 'Ancho: 385mm',
     note:'Profundidad: 530mm',
@@ -18,18 +18,18 @@ const products = [
   { id: 3, name: 'Columna Extraible', 
     category: 'Accesorios de Cocina', 
     img: 'imgcat/ce.jpg',
-    price: 49.9, oldPrice: 65, 
+    price: 49.9, 
     note: 'Tres puntos de anclaje' },
 
   { id: 4, name: 'Despensa de Lujo de cierre lento', 
     category: 'Accesorios de Cocina', 
-    price: 18.75, oldPrice: 24.99, 
+    price: 18.75, 
     img: 'imgcat/dl.jpg',
     note: 'Acabado negro mate' },
 
   { id: 5, name: 'Esquinero Magic cierre lento', 
     category: 'Accesorios de Cocina', 
-    price: 6.9, oldPrice: 9.5, 
+    price: 6.9, 
     img: 'imgcat/esquineros.jpg',
     note: '50 unidades · acero zincado' },
 
@@ -392,9 +392,6 @@ function cardTemplate(product) {
   let badge = '';
   if (product.isNew) {
     badge = '<span class="badge badge-new">Nuevo</span>';
-  } else if (product.oldPrice) {
-    const discount = Math.round((1 - product.price / product.oldPrice) * 100);
-    badge = `<span class="badge badge-promo">-${discount}%</span>`;
   }
 
   return `
@@ -410,7 +407,6 @@ function cardTemplate(product) {
         <div class="product-foot">
           <div class="price">
             <span class="price-now">${formatPrice(product.price)}</span>
-            ${product.oldPrice ? `<span class="price-old">${formatPrice(product.oldPrice)}</span>` : ''}
           </div>
         </div>
       </div>
@@ -505,6 +501,140 @@ document.getElementById('clearFilters').addEventListener('click', () => {
 
 renderCatalog();
 
+const carousel = document.getElementById('carousel');
+const carouselTrack = document.getElementById('carouselTrack');
+const carouselDots = document.getElementById('carouselDots');
+const carouselPrev = document.getElementById('carouselPrev');
+const carouselNext = document.getElementById('carouselNext');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+const carouselProducts = [...new Map(products.map((product) => [product.category, product])).values()].slice(0, 6);
+let carouselIndex = 0;
+let carouselTimer = null;
+let touchStartX = null;
+
+carouselDots.innerHTML = carouselProducts
+  .map((product, index) => `<button class="carousel-dot" type="button" data-index="${index}" aria-label="Mostrar ${product.name}"></button>`)
+  .join('');
+
+function renderCarousel() {
+  const product = carouselProducts[carouselIndex];
+  carouselTrack.innerHTML = `
+    <article class="carousel-slide">
+      <div class="carousel-media">
+        <img src="${product.img}" alt="${product.name}">
+        <span class="carousel-counter">${carouselIndex + 1} / ${carouselProducts.length}</span>
+      </div>
+      <div class="carousel-info">
+        <span class="product-category">${product.category}</span>
+        <h3>${product.name}</h3>
+        <p>${product.note}</p>
+        <div class="carousel-foot">
+          <span class="price-now">${formatPrice(product.price)}</span>
+          <button class="btn btn-primary" type="button" data-tab-go="catalogo">Ver en el catálogo</button>
+        </div>
+      </div>
+    </article>
+  `;
+
+  carouselDots.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+    if (index === carouselIndex) {
+      dot.setAttribute('aria-current', 'true');
+    } else {
+      dot.removeAttribute('aria-current');
+    }
+  });
+}
+
+function showCarouselSlide(index) {
+  carouselIndex = (index + carouselProducts.length) % carouselProducts.length;
+  renderCarousel();
+}
+
+function stopCarousel() {
+  if (carouselTimer === null) return;
+  clearInterval(carouselTimer);
+  carouselTimer = null;
+}
+
+function startCarousel() {
+  if (carouselTimer !== null || reduceMotion.matches) return;
+  carouselTimer = setInterval(() => showCarouselSlide(carouselIndex + 1), 5000);
+}
+
+function restartCarousel() {
+  stopCarousel();
+  startCarousel();
+}
+
+function resumeCarousel() {
+  if (!carousel.matches(':hover') && !carousel.contains(document.activeElement)) startCarousel();
+}
+
+carouselPrev.addEventListener('click', () => {
+  showCarouselSlide(carouselIndex - 1);
+  restartCarousel();
+});
+
+carouselNext.addEventListener('click', () => {
+  showCarouselSlide(carouselIndex + 1);
+  restartCarousel();
+});
+
+carouselDots.addEventListener('click', (event) => {
+  const dot = event.target.closest('.carousel-dot');
+  if (!dot) return;
+  showCarouselSlide(Number(dot.dataset.index));
+  restartCarousel();
+});
+
+carousel.addEventListener('keydown', (event) => {
+  const moves = { ArrowRight: 1, ArrowLeft: -1 };
+  if (!(event.key in moves)) return;
+  event.preventDefault();
+  showCarouselSlide(carouselIndex + moves[event.key]);
+  restartCarousel();
+});
+
+carouselTrack.addEventListener('click', (event) => {
+  const button = event.target.closest('[data-tab-go]');
+  if (!button) return;
+  searchInput.value = carouselProducts[carouselIndex].name;
+  categorySelect.value = 'all';
+  sortSelect.value = 'relevance';
+  renderCatalog();
+  switchTab(button.dataset.tabGo);
+});
+
+carousel.addEventListener('mouseenter', stopCarousel);
+carousel.addEventListener('mouseleave', resumeCarousel);
+carousel.addEventListener('focusin', stopCarousel);
+carousel.addEventListener('focusout', (event) => {
+  if (!carousel.contains(event.relatedTarget)) setTimeout(resumeCarousel, 0);
+});
+
+carousel.addEventListener('touchstart', (event) => {
+  touchStartX = event.changedTouches[0].screenX;
+}, { passive: true });
+
+carousel.addEventListener('touchend', (event) => {
+  if (touchStartX === null) return;
+  const delta = event.changedTouches[0].screenX - touchStartX;
+  if (Math.abs(delta) > 40) {
+    showCarouselSlide(carouselIndex + (delta < 0 ? 1 : -1));
+    restartCarousel();
+  }
+  touchStartX = null;
+}, { passive: true });
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) stopCarousel();
+  else resumeCarousel();
+});
+
+renderCarousel();
+startCarousel();
+
 const chatLauncher = document.getElementById('chatLauncher');
 const chatPanel = document.getElementById('chatPanel');
 const closeChatBtn = document.getElementById('closeChat');
@@ -513,54 +643,47 @@ const chatQuick = document.getElementById('chatQuick');
 const chatForm = document.getElementById('chatForm');
 const chatInput = document.getElementById('chatInput');
 
-const defaultSuggestions = ['Ver promociones', 'Ver catálogo', 'Horario', 'Precios'];
+const defaultSuggestions = ['Ver catálogo', 'Horario', 'Precios'];
 let chatStarted = false;
 
 //CHATBOT RULES
 
 const chatRules = [
   {
-    keywords: ['promocion', 'promociones', 'oferta', 'ofertas', 'descuento', 'descuentos', 'rebaja', 'rebajas'],
-    reply:
-      'Tenemos ofertas activas con hasta 30% de descuento en herraduras decorativas, bisagras de acero y cerraduras multipunto. Puedes verlas en la pestaña Catálogo.',
-    suggestions: ['Ver catálogo', 'Horario', 'Precios'],
-  },
-
-  {
     keywords: ['bisagra', 'bisagras'],
     reply:
       'Tenemos bisagras de acero inoxidable desde $3,25, bisagras de libro desde $7,80 y bisagras hidráulicas desde $27,90. También vendemos kits de tornillos para instalación.',
-    suggestions: ['Ver catálogo', 'Promociones', 'Precios'],
+    suggestions: ['Ver catálogo', 'Precios', 'Garantía'],
   },
   {
     keywords: ['cerradura', 'cerraduras', 'candado', 'candados', 'llave', 'seguridad'],
     reply:
       'En cerraduras tienes opciones desde $22,30 (candado de alta seguridad), la cerradura multipunto a $49,90 y la cerradura electrónica con teclado a $89,99.',
-    suggestions: ['Ver catálogo', 'Promociones', 'Garantía'],
+    suggestions: ['Ver catálogo', 'Garantía', 'Precios'],
   },
   {
     keywords: ['manija', 'manijas', 'picaporte', 'tirador'],
     reply:
-      'Nuestras manijas van desde $13,60 (redonda de latón) y $18,75 (palanca negra mate, en promoción). Todas incluyen tornillos de instalación.',
-    suggestions: ['Ver catálogo', 'Promociones', 'Precios'],
+       'Nuestras manijas van desde $13,60 (redonda de latón) y $18,75 (palanca negra mate). Todas incluyen tornillos de instalación.',
+    suggestions: ['Ver catálogo', 'Precios', 'Garantía'],
   },
   {
     keywords: ['herradura', 'herraduras'],
     reply:
-      'Las herraduras decorativas están desde $8,50 con descuento. También tenemos herradura magnética, de pared vintage y pasadores de embutir. Son ideales para puertas y decoración.',
-    suggestions: ['Ver catálogo', 'Promociones', 'Horario'],
+       'Las herraduras decorativas están desde $8,50. También tenemos herradura magnética, de pared vintage y pasadores de embutir. Son ideales para puertas y decoración.',
+    suggestions: ['Ver catálogo', 'Precios', 'Horario'],
   },
   {
     keywords: ['tornillo', 'tornillos', 'tornilleria'],
     reply:
-      'El kit de 50 tornillos para bisagras cuesta $6,90 (antes $9,50). También contamos con tornillería suelta; dime qué medida necesitas y te asesoramos.',
+       'El kit de 50 tornillos para bisagras cuesta $6,90. También contamos con tornillería suelta; dime qué medida necesitas y te asesoramos.',
     suggestions: ['Ver catálogo', 'Precios', 'Asesor'],
   },
   {
     keywords: ['precio', 'precios', 'cuanto cuesta', 'cuanto vale', 'costo', 'costos', 'valor'],
     reply:
       'Nuestros precios van desde $3,25 hasta $89,99 según el producto. Todos incluyen IVA y tienen garantía de 6 meses. Puedes ver cada precio en la pestaña Catálogo.',
-    suggestions: ['Ver catálogo', 'Promociones', 'Métodos de pago'],
+    suggestions: ['Ver catálogo', 'Garantía', 'Métodos de pago'],
   },
   {
     keywords: ['horario', 'horarios', 'abierto', 'abren', 'cierran', 'atienden', 'atencion'],
@@ -590,7 +713,7 @@ const chatRules = [
     keywords: ['catalogo', 'productos', 'que venden', 'que tienen', 'inventario', 'modelos'],
     reply:
       'En el catálogo encontrarás bisagras, cerraduras, manijas, herraduras decorativas, tornillería y accesorios. Puedes filtrar por categoría, buscar por nombre y ordenar por precio.',
-    suggestions: ['Promociones', 'Precios', 'Horario'],
+    suggestions: ['Precios', 'Horario', 'Garantía'],
     action: 'catalogo',
   },
   {
@@ -602,7 +725,7 @@ const chatRules = [
   {
     keywords: ['hola', 'buenas', 'buenos dias', 'buenas tardes', 'buenas noches', 'que tal', 'saludos', 'hey'],
     reply:
-      '¡Hola! Soy Herra, tu asistente virtual. Puedo ayudarte con productos, precios, promociones y horarios. ¿Qué deseas saber?',
+       '¡Hola! Soy Herra, tu asistente virtual. Puedo ayudarte con productos, precios, horarios y garantías. ¿Qué deseas saber?',
     suggestions: defaultSuggestions,
   },
   {
@@ -613,7 +736,7 @@ const chatRules = [
   {
     keywords: ['adios', 'chao', 'hasta luego', 'nos vemos', 'bye'],
     reply: '¡Hasta pronto! Gracias por visitar Herraduras. Que tengas un buen día.',
-    suggestions: ['Ver promociones', 'Ver catálogo'],
+    suggestions: ['Ver catálogo', 'Horario'],
   },
 ];
 
@@ -687,7 +810,7 @@ function sendChatMessage(rawText) {
     hideTyping();
     const reply = rule
       ? rule.reply
-      : 'No estoy seguro de haber entendido. Puedo ayudarte con horarios, precios, productos y promociones. También puedes pedir hablar con un asesor.';
+      : 'No estoy seguro de haber entendido. Puedo ayudarte con horarios, precios, productos y garantías. También puedes pedir hablar con un asesor.';
     addMessage(reply, 'bot');
     setQuickReplies(rule && rule.suggestions ? rule.suggestions : defaultSuggestions);
 
@@ -705,7 +828,7 @@ function openChat() {
   if (!chatStarted) {
     chatStarted = true;
     addMessage(
-      '¡Hola! Soy Herra, tu asistente virtual de Herraduras. Puedo ayudarte con productos, precios, horarios y promociones. ¿Qué necesitas?',
+      '¡Hola! Soy Herra, tu asistente virtual de Herraduras. Puedo ayudarte con productos, precios, horarios y garantías. ¿Qué necesitas?',
       'bot'
     );
     setQuickReplies(defaultSuggestions);

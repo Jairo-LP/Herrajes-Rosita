@@ -225,32 +225,6 @@ main {
   }
 }
 
-.about-hero {
-  position: relative;
-  overflow: hidden;
-  border-radius: 26px;
-  padding: clamp(24px, 4vw, 44px);
-  color: #ffffff;
-  background:
-    radial-gradient(120% 120% at 100% 0%, rgba(186, 124, 80, 0.939), transparent 50%),
-    linear-gradient(135deg, #7988aa, #3f4b5b 58%, #1c283c);
-}
-
-.about-hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
-  background-size: 18px 18px;
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-.about-hero > * {
-  position: relative;
-  z-index: 1;
-}
-
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -264,21 +238,6 @@ main {
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-}
-
-.about-hero h1 {
-  margin: 18px 0 12px;
-  font-size: clamp(1.85rem, 3.4vw, 2.7rem);
-  line-height: 1.06;
-  letter-spacing: -0.03em;
-}
-
-.about-hero p {
-  margin: 0;
-  max-width: 60ch;
-  color: #d1d5db;
-  font-size: 0.96rem;
-  line-height: 1.65;
 }
 
 .btn {
@@ -398,6 +357,169 @@ main {
   line-height: 1.6;
 }
 
+.showcase {
+  margin: 0 0 36px;
+}
+
+.showcase-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.showcase-head h2 {
+  margin: 10px 0 0;
+  font-size: clamp(1.3rem, 2.2vw, 1.75rem);
+  letter-spacing: -0.02em;
+}
+
+.eyebrow-dark {
+  border-color: #fed7aa;
+  background: var(--primary-soft);
+  color: var(--primary-deep);
+}
+
+.carousel-controls {
+  display: flex;
+  gap: 8px;
+  flex: none;
+}
+
+.carousel-btn {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--primary-deep);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: background 0.10s ease, transform 0.10s ease;
+}
+
+.carousel-btn:hover {
+  background: var(--primary-soft);
+}
+
+.carousel-btn:active {
+  transform: scale(0.95);
+}
+
+.carousel-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.carousel {
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.carousel:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.carousel-slide {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  margin: 0;
+  animation: fadeUp 0.15s ease both;
+}
+
+.carousel-media {
+  position: relative;
+  min-height: 300px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: radial-gradient(120% 120% at 30% 20%, #f9fafb, #e5e7eb);
+}
+
+.carousel-media img {
+  width: 100%;
+  height: 100%;
+  max-height: 340px;
+  object-fit: cover;
+}
+
+.carousel-counter {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(17, 24, 39, 0.78);
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.carousel-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: clamp(20px, 3vw, 32px);
+}
+
+.carousel-info h3 {
+  margin: 0;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.carousel-info p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.carousel-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 14px;
+}
+
+.carousel-foot .btn {
+  padding: 10px 14px;
+  font-size: 0.78rem;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.carousel-dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: var(--surface-2);
+  cursor: pointer;
+  transition: width 0.2s ease, background 0.2s ease;
+}
+
+.carousel-dot[aria-current="true"] {
+  width: 26px;
+  background: var(--primary);
+}
+
 .about-list {
   list-style: none;
   margin: 0;
@@ -426,6 +548,73 @@ main {
 
 .about-list a:hover {
   text-decoration: underline;
+}
+
+.feature-grid {
+  display: grid;
+  gap: 28px;
+  grid-auto-rows: 1fr;
+}
+
+.vision {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: clamp(16px, 3vw, 28px);
+  align-items: start;
+  padding: clamp(22px, 3vw, 32px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.vision-mark {
+  width: 88px;
+  height: 88px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  background: var(--primary-soft);
+  color: var(--primary-deep);
+}
+
+.vision-mark svg {
+  width: 40px;
+  height: 40px;
+}
+
+.vision .eyebrow {
+  border-color: #fed7aa;
+  background: var(--primary-soft);
+  color: var(--primary-deep);
+}
+
+.vision h2 {
+  margin: 10px 0 12px;
+  font-size: clamp(1.5rem, 2.6vw, 1.95rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.vision p {
+  margin: 0;
+  max-width: 78ch;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.vision p + p {
+  margin-top: 12px;
+}
+
+.vision mark,
+.about-card mark {
+  padding: 1px 4px;
+  border-radius: 5px;
+  background: var(--primary-soft);
+  color: var(--primary-deep);
+  font-weight: 700;
 }
 
 .section-head {
@@ -538,11 +727,6 @@ main {
   text-transform: uppercase;
 }
 
-.badge-promo {
-  background: var(--primary-soft);
-  color: var(--primary-deep);
-}
-
 .badge-new {
   background: var(--surface-2);
   color: #374151;
@@ -598,12 +782,6 @@ main {
   font-size: 1.05rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-}
-
-.price-old {
-  font-size: 0.72rem;
-  color: var(--muted);
-  text-decoration: line-through;
 }
 
 .catalog-toolbar {
@@ -1115,6 +1293,37 @@ noscript {
   .trust,
   .about-grid {
     grid-template-columns: 1fr;
+  }
+
+  .showcase-head {
+    align-items: center;
+  }
+
+  .vision {
+    grid-template-columns: 1fr;
+  }
+
+  .vision-mark {
+    width: 72px;
+    height: 72px;
+    border-radius: 18px;
+  }
+
+  .vision-mark svg {
+    width: 34px;
+    height: 34px;
+  }
+
+  .carousel-slide {
+    grid-template-columns: 1fr;
+  }
+
+  .carousel-media {
+    min-height: 220px;
+  }
+
+  .carousel-media img {
+    max-height: 260px;
   }
 
   .section-head {
