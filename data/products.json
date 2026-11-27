@@ -1,0 +1,500 @@
+[
+  {
+    "id": 1,
+    "name": "Lavabo",
+    "category": "Accesorios de Cocina",
+    "price": 8.5,
+    "oldPrice": 12.99,
+    "note": "Acabado en acero inoxidable 304",
+    "img": "imgcat/lavabo.jpg",
+    "icon": "lavabo"
+  },
+  {
+    "id": 2,
+    "name": "Despensa de Cierre Lento",
+    "category": "Accesorios de Cocina",
+    "price": 3.25,
+    "oldPrice": 4.5,
+    "img": "imgcat/dcl.jpg",
+    "note": "Ancho: 385mm · Profundidad: 530mm · Altura: 1320/1620mm"
+  },
+  {
+    "id": 3,
+    "name": "Columna Extraible",
+    "category": "Accesorios de Cocina",
+    "img": "imgcat/ce.jpg",
+    "price": 49.9,
+    "oldPrice": 65,
+    "note": "Tres puntos de anclaje"
+  },
+  {
+    "id": 4,
+    "name": "Despensa de Lujo de cierre lento",
+    "category": "Accesorios de Cocina",
+    "price": 18.75,
+    "oldPrice": 24.99,
+    "img": "imgcat/dl.jpg",
+    "note": "Acabado negro mate"
+  },
+  {
+    "id": 5,
+    "name": "Esquinero Magic cierre lento",
+    "category": "Accesorios de Cocina",
+    "price": 6.9,
+    "oldPrice": 9.5,
+    "img": "imgcat/esquineros.jpg",
+    "note": "50 unidades · acero zincado"
+  },
+  {
+    "id": 6,
+    "name": "Bandeja Oscilante de Cierre Lento",
+    "category": "Accesorios de Cocina",
+    "price": 89.99,
+    "note": "Clave numérica y tarjeta",
+    "img": "imgcat/bandeja.jpg",
+    "isNew": true
+  },
+  {
+    "id": 7,
+    "name": "Super Magic",
+    "category": "Herraduras",
+    "img": "imgcat/sm.jpg",
+    "price": 14.5,
+    "note": "Cierre silencioso",
+    "isNew": true
+  },
+  {
+    "id": 8,
+    "name": "Cesta Giratoria",
+    "category": "Bisagras",
+    "price": 27.9,
+    "img": "imgcat/cesta.jpg",
+    "note": "Cierre automático suave",
+    "isNew": true
+  },
+  {
+    "id": 9,
+    "name": "Despensa Abatible",
+    "category": "Accesorios de Cocina",
+    "price": 72,
+    "img": "imgcat/dab.png",
+    "note": "Modulo Bajo",
+    "isNew": true
+  },
+  {
+    "id": 10,
+    "name": "Cesta Extraible Lateral",
+    "category": "Accesorios de Cocina",
+    "img": "imgcat/cel.png",
+    "price": 11.2,
+    "note": "Acero inoxidable satinado"
+  },
+  {
+    "id": 11,
+    "name": "Cesta Portabotellas",
+    "category": "Accesorios de Cocina",
+    "img": "imgcat/cpb.png",
+    "price": 5.4,
+    "note": "Protege paredes y puertas"
+  },
+  {
+    "id": 12,
+    "name": "Cesta Multiusos",
+    "category": "Accesorios de Cocina",
+    "price": 22.3,
+    "img": "imgcat/cmu.png",
+    "note": "Arco templado · 50 mm"
+  },
+  {
+    "id": 13,
+    "name": "Cesto de Cierre Lento",
+    "category": "Accesorios de Cocina",
+    "price": 9.99,
+    "img": "imgcat/cc.png",
+    "note": "Hierro forjado · 3 ganchos"
+  },
+  {
+    "id": 14,
+    "name": "Cesto Dos Niveles",
+    "category": "Accesorios de Cocina",
+    "price": 13.6,
+    "img": "imgcat/cdn.png",
+    "note": "Latón pulido · roseta 50 mm"
+  },
+  {
+    "id": 15,
+    "name": "Lumbrero",
+    "category": "Accesorios de Cocina",
+    "price": 7.8,
+    "img": "imgcat/lumbrero.png",
+    "note": "Par de bisagras · 3 pulgadas"
+  },
+  {
+    "id": 16,
+    "name": "Condimentero PortaPlatos",
+    "category": "Accesorios de Cocina",
+    "price": 12.4,
+    "img": "imgcat/cpp.png",
+    "note": "Estilo rústico envejecido"
+  },
+  {
+    "id": 17,
+    "name": "Cesta de cierre lento",
+    "category": "Accesorios de Cocina",
+    "price": 15.9,
+    "img": "imgcat/ca.png",
+    "note": "Acero inoxidable satinado"
+  },
+  {
+    "id": 18,
+    "name": "Cesta de cierre lento en U",
+    "category": "Accesorios de Cocina",
+    "price": 19.9,
+    "img": "imgcat/clu.png",
+    "note": "Acero inoxidable satinado"
+  },
+  {
+    "id": 19,
+    "name": "Basuero Simple",
+    "category": "Basureros de Cocina",
+    "price": 12.5,
+    "img": "imgcat/basurero.png",
+    "note": "Material resistente y fácil de limpiar"
+  },
+  {
+    "id": 20,
+    "name": "Basuero Doble",
+    "category": "Basureros de Cocina",
+    "price": 18.75,
+    "img": "imgcat/bd.png",
+    "note": "Diseño moderno y funcional"
+  },
+  {
+    "id": 21,
+    "name": "Basuero Doble Premium",
+    "category": "Basureros de Cocina",
+    "price": 24.99,
+    "img": "imgcat/basdp.png",
+    "note": "Material de alta calidad y acabado premium"
+  },
+  {
+    "id": 22,
+    "name": "Basuero Doble con Tapa",
+    "category": "Basureros de Cocina",
+    "price": 22.5,
+    "img": "imgcat/bdt.png",
+    "note": "Diseño moderno y funcional"
+  },
+  {
+    "id": 23,
+    "name": "Cesta Abatible Ajustable",
+    "category": "Accesorios de Mueble Alto",
+    "price": 29.99,
+    "img": "imgcat/caa.png",
+    "note": "Ajustable a diferentes tamaños de gabinetes"
+  },
+  {
+    "id": 24,
+    "name": "Bandeja de Platos",
+    "category": "Accesorios de Mueble Alto",
+    "price": 14.5,
+    "img": "imgcat/bdplatos.png",
+    "note": "Diseño elegante y funcional"
+  },
+  {
+    "id": 25,
+    "name": "Accesorio Abrir Cierre Lento",
+    "category": "Accesorios",
+    "price": 19.9,
+    "img": "imgcat/aacl.png",
+    "note": "Acabado: Cromado"
+  },
+  {
+    "id": 26,
+    "name": "Avento Cierre Lento",
+    "category": "Accesorios",
+    "price": 27.9,
+    "img": "imgcat/avcl.png",
+    "note": "Acabado: plastico"
+  },
+  {
+    "id": 27,
+    "name": "Avento Puerta Doble",
+    "category": "Accesorios",
+    "price": 49.9,
+    "img": "imgcat/avpd.png",
+    "note": "Acabado: Plastico"
+  },
+  {
+    "id": 28,
+    "name": "Avento Puerta Simple",
+    "category": "Accesorios",
+    "price": 39.9,
+    "img": "imgcat/avps.png",
+    "note": "Acabado: Plastico"
+  },
+  {
+    "id": 29,
+    "name": "Avento Emportable",
+    "category": "Accesorios",
+    "price": 59.9,
+    "img": "imgcat/ave.png",
+    "note": "Acabado: Negro Mate"
+  },
+  {
+    "id": 30,
+    "name": "Escurridor Exterior",
+    "category": "Accesorios",
+    "price": 24.9,
+    "img": "imgcat/ese.png",
+    "note": "Acabado: Cromado"
+  },
+  {
+    "id": 31,
+    "name": "Accesorio SS-304",
+    "category": "Accesorios",
+    "price": 19.9,
+    "img": "imgcat/ass304.png",
+    "note": "Acero inoxidable"
+  },
+  {
+    "id": 32,
+    "name": "Tuvo de Acero Inoxidable",
+    "category": "Accesorios",
+    "price": 29.9,
+    "img": "imgcat/tai.png",
+    "note": "Acero inoxidable"
+  },
+  {
+    "id": 33,
+    "name": "Porta Cubiertos",
+    "category": "Accesorios",
+    "price": 14.9,
+    "img": "imgcat/pc.png",
+    "note": "Material resistente y fácil de limpiar"
+  },
+  {
+    "id": 34,
+    "name": "Torre Space Extraible",
+    "category": "Línea Premium",
+    "price": 39.9,
+    "img": "imgcat/tosex.png",
+    "note": "Diseño moderno y funcional"
+  },
+  {
+    "id": 35,
+    "name": "Torre Extraible",
+    "category": "Línea Premium",
+    "price": 49.9,
+    "img": "imgcat/tex.png",
+    "note": "Aluminio Antideslizante"
+  },
+  {
+    "id": 36,
+    "name": "Platero",
+    "category": "Línea Premium",
+    "price": 59.9,
+    "img": "imgcat/platero.png",
+    "note": "Aluminio y Vidriox"
+  },
+  {
+    "id": 37,
+    "name": "Ollero",
+    "category": "Línea Premium",
+    "price": 69.9,
+    "img": "imgcat/ollero.png",
+    "note": "Aluminio y Vidrio"
+  },
+  {
+    "id": 38,
+    "name": "Condimentero Lateral",
+    "category": "Línea Premium",
+    "price": 79.9,
+    "img": "imgcat/condl.png",
+    "note": "Acero Inoxidable y Vidrio"
+  },
+  {
+    "id": 39,
+    "name": "Condimentero Central",
+    "category": "Línea Premium",
+    "price": 89.9,
+    "img": "imgcat/condc.png",
+    "note": "Acero Inoxidable y Vidrio"
+  },
+  {
+    "id": 40,
+    "name": "Despensa Abatible",
+    "category": "Línea Premium",
+    "price": 99.9,
+    "img": "imgcat/desabat.png",
+    "note": "Aluminio Antideslizante"
+  },
+  {
+    "id": 41,
+    "name": "Magic Corner (derecho)",
+    "category": "Línea Premium",
+    "price": 109.9,
+    "img": "imgcat/mcd.png",
+    "note": "Aluminio y Vidrio"
+  },
+  {
+    "id": 42,
+    "name": "Magic Corner (izquierdo)",
+    "category": "Línea Premium",
+    "price": 109.9,
+    "img": "imgcat/mci.png",
+    "note": "Aluminio y Vidrio"
+  },
+  {
+    "id": 43,
+    "name": "Super Magic Corner (De Vidrio)",
+    "category": "Línea Premium",
+    "price": 119.9,
+    "img": "imgcat/supmc.png",
+    "note": "Aluminio y Vidrio"
+  },
+  {
+    "id": 44,
+    "name": "Cesta Abtible (aluminio)",
+    "category": "Línea Premium",
+    "price": 129.9,
+    "img": "imgcat/cestaabt.png",
+    "note": "Aluminio y Vidrio"
+  },
+  {
+    "id": 45,
+    "name": "Porta Copas",
+    "category": "Línea Premium",
+    "price": 139.9,
+    "img": "imgcat/portacopas.png",
+    "note": "Aluminio y Vidrio"
+  },
+  {
+    "id": 46,
+    "name": "Columna Extraible (de Vidrio)",
+    "category": "Línea Premium",
+    "price": 149.9,
+    "img": "imgcat/colexvr.png",
+    "note": "Aluminio y Vidrio"
+  },
+  {
+    "id": 47,
+    "name": "Despensa Abatible (de Vidrio)",
+    "category": "Línea Premium",
+    "price": 159.9,
+    "img": "imgcat/desabatv.png",
+    "note": "Aluminio y Vidrio"
+  },
+  {
+    "id": 48,
+    "name": "Cesta Abatible (de Vidrio)",
+    "category": "Línea Premium",
+    "price": 169.9,
+    "img": "imgcat/cestaabtv.png",
+    "note": "Aluminio y Vidrio"
+  },
+  {
+    "id": 49,
+    "name": "Riel Cajon S",
+    "category": "Línea Premium",
+    "price": 179.9,
+    "img": "imgcat/rielcajon.png",
+    "note": "Metal y Vidrio"
+  },
+  {
+    "id": 50,
+    "name": "Riel Cajon L",
+    "category": "Línea Premium",
+    "price": 189.9,
+    "img": "imgcat/rielcajonl.png",
+    "note": "Metal y Vidrio"
+  },
+  {
+    "id": 51,
+    "name": "Dream Box S Front",
+    "category": "Línea Premium",
+    "price": 199.9,
+    "img": "imgcat/dreamboxs.png",
+    "note": "Aluminio y Vidrio"
+  },
+  {
+    "id": 52,
+    "name": "Dream Box L Front",
+    "category": "Línea Premium",
+    "price": 209.9,
+    "img": "imgcat/dreamboxl.png",
+    "note": "Aluminio y Vidrio"
+  },
+  {
+    "id": 53,
+    "name": "Riel Sincronizada",
+    "category": "Línea Premium",
+    "price": 219.9,
+    "img": "imgcat/rielsincronizada.png",
+    "note": "Push Open y Soft Close"
+  },
+  {
+    "id": 54,
+    "name": "Soporte Abatible",
+    "category": "Accesorios de Dormitorio",
+    "price": 229.9,
+    "img": "imgcat/soporteabatible.png",
+    "note": "Aluminio y Vidrio"
+  },
+  {
+    "id": 55,
+    "name": "Esquinero Alfa Giratorio",
+    "category": "Accesorios de Dormitorio",
+    "price": 239.9,
+    "img": "imgcat/esquinerogiratorio.png",
+    "note": "Aluminio"
+  },
+  {
+    "id": 56,
+    "name": "Soporte Extraible de Armadores",
+    "category": "Accesorios de Dormitorio",
+    "price": 249.9,
+    "img": "imgcat/soporteextraible.png",
+    "note": "Aluminio"
+  },
+  {
+    "id": 57,
+    "name": "Colgador Doble para Pantalones",
+    "category": "Accesorios de Dormitorio",
+    "price": 259.9,
+    "img": "imgcat/colgadordoble.png",
+    "note": "Aluminio"
+  },
+  {
+    "id": 58,
+    "name": "Colgador Simple para Pantalones",
+    "category": "Accesorios de Dormitorio",
+    "price": 269.9,
+    "img": "imgcat/colgadorsimple.png",
+    "note": "Aluminio"
+  },
+  {
+    "id": 59,
+    "name": "Cesta Extraible Para Closet (Alambre)",
+    "category": "Accesorios de Dormitorio",
+    "price": 279.9,
+    "img": "imgcat/cestaextraible.png",
+    "note": "Aluminio"
+  },
+  {
+    "id": 60,
+    "name": "Porta Pantalones Extraible",
+    "category": "Accesorios de Dormitorio",
+    "price": 289.9,
+    "img": "imgcat/portapantalones.png",
+    "note": "Aluminio"
+  },
+  {
+    "id": 61,
+    "name": "Joyero Perla",
+    "category": "Accesorios de Dormitorio",
+    "price": 299.9,
+    "img": "imgcat/joyeroperla.png",
+    "note": "Aluminio y Gamusa"
+  }
+]
