@@ -2,14 +2,14 @@
 const products = [
   { id: 1, name: 'Lavabo',
     category: 'Accesorios de Cocina', 
-    price: 8.5, oldPrice: 12.99, 
+    price: 8.5, 
     note: 'Acabado en acero inoxidable 304',
     img: 'imgcat/lavabo.jpg',
     icon: 'lavabo' },
 
   { id: 2, name: 'Despensa de Cierre Lento', 
     category: 'Accesorios de Cocina', 
-    price: 3.25, oldPrice: 4.5, 
+    price: 3.25, 
     img: 'imgcat/dcl.jpg',
     note: 'Ancho: 385mm',
     note:'Profundidad: 530mm',
@@ -18,23 +18,23 @@ const products = [
   { id: 3, name: 'Columna Extraible', 
     category: 'Accesorios de Cocina', 
     img: 'imgcat/ce.jpg',
-    price: 49.9, oldPrice: 65, 
+    price: 49.9, 
     note: 'Tres puntos de anclaje' },
 
   { id: 4, name: 'Despensa de Lujo de cierre lento', 
-    category: 'Manijas', 
-    price: 18.75, oldPrice: 24.99, 
+    category: 'Accesorios de Cocina', 
+    price: 18.75, 
     img: 'imgcat/dl.jpg',
     note: 'Acabado negro mate' },
 
   { id: 5, name: 'Esquinero Magic cierre lento', 
-    category: 'Tornillería', 
-    price: 6.9, oldPrice: 9.5, 
+    category: 'Accesorios de Cocina', 
+    price: 6.9, 
     img: 'imgcat/esquineros.jpg',
     note: '50 unidades · acero zincado' },
 
   { id: 6, name: 'Bandeja Oscilante de Cierre Lento', 
-    category: 'Cerraduras', 
+    category: 'Accesorios de Cocina', 
     price: 89.99, note: 'Clave numérica y tarjeta', 
     img: 'imgcat/bandeja.jpg',
     isNew: true },
@@ -51,44 +51,325 @@ const products = [
 
     note: 'Cierre automático suave', isNew: true },
 
-  { id: 9, name: 'Mirilla digital con cámara', 
-    category: 'Cerraduras', 
-    price: 72, note: 'Visión nocturna · pantalla LCD', isNew: true },
+  { id: 9, name: 'Despensa Abatible', 
+    category: 'Accesorios de Cocina', 
+    price: 72,
+    img: 'imgcat/dab.jpg',
+    note: 'Modulo Bajo',
+     isNew: true },
 
-  { id: 10, name: 'Pasador de embutir inoxidable', 
-    category: 'Herraduras', 
+  { id: 10, name: 'Cesta Extraible Lateral', 
+    category: 'Accesorios de Cocina', 
+    img: 'imgcat/cel.jpg',
     price: 11.2, note: 'Acero inoxidable satinado' },
 
-  { id: 11, name: 'Tope de puerta de acero', 
-    category: 'Bisagras', price: 5.4, 
+  { id: 11, name: 'Cesta Portabotellas', 
+    category: 'Accesorios de Cocina', 
+    img: 'imgcat/cpb.jpg',
+    price: 5.4, 
     note: 'Protege paredes y puertas' },
 
-  { id: 12, name: 'Candado de alta seguridad', 
-    category: 'Cerraduras', 
+  { id: 12, name: 'Cesta Multiusos', 
+    category: 'Accesorios de Cocina', 
     price: 22.3, 
+    img: 'imgcat/cmu.jpg',
     note: 'Arco templado · 50 mm' },
 
-  { id: 13, name: 'Perchero de herradura', 
+  { id: 13, name: 'Cesto de Cierre Lento', 
     category: 'Accesorios de Cocina', 
     price: 9.99, 
+    img: 'imgcat/cc.jpg',
     note: 'Hierro forjado · 3 ganchos' },
 
-  { id: 14, name: 'Manija redonda de latón', 
-    category: 'Manijas', 
+  { id: 14, name: 'Cesto Dos Niveles', 
+    category: 'Accesorios de Cocina', 
     price: 13.6, 
+    img: 'imgcat/cdn.jpg',
     note: 'Latón pulido · roseta 50 mm' },
 
-  { id: 15, name: 'Bisagra de libro 3" (par)', 
-    category: 'Bisagras', 
+  { id: 15, name: 'Lumbrero', 
+    category: 'Accesorios de Cocina', 
     price: 7.8, 
+    img: 'imgcat/lumbrero.jpg',
     note: 'Par de bisagras · 3 pulgadas' },
 
-  { id: 16, name: 'Herradura de pared vintage', 
-    category: 'Herraduras', 
+  { id: 16, name: 'Condimentero PortaPlatos', 
+    category: 'Accesorios de Cocina', 
     price: 12.4, 
+    img: 'imgcat/cpp.jpg',
     note: 'Estilo rústico envejecido' },
-];
 
+  { id: 17, name: 'Cesta de cierre lento', 
+    category: 'Accesorios de Cocina', 
+    price: 15.9, 
+    img: 'imgcat/ca.jpg',
+    note: 'Acero inoxidable satinado' },
+
+  { id: 18, name: 'Cesta de cierre lento en U', 
+    category: 'Accesorios de Cocina', 
+    price: 19.9, 
+    img: 'imgcat/clu.jpg',
+    note: 'Acero inoxidable satinado' },
+  
+  { id: 19, name: 'Basuero Simple',
+    category: 'Basureros de Cocina',
+    price: 12.5,
+    img: 'imgcat/basurero.jpg',
+    note: 'Material resistente y fácil de limpiar' },
+
+  { id: 20, name: 'Basuero Doble',
+    category: 'Basureros de Cocina',
+    price: 18.75,
+    img: 'imgcat/bd.jpg',
+    note: 'Diseño moderno y funcional' },
+
+  { id: 21, name: 'Basuero Doble Premium',
+    category: 'Basureros de Cocina',
+    price: 24.99,
+    img: 'imgcat/basdp.jpg',
+    note: 'Material de alta calidad y acabado premium' },
+
+  { id: 22, name: 'Basuero Doble con Tapa',
+    category: 'Basureros de Cocina',
+    price: 22.5,
+    img: 'imgcat/bdt.jpg',
+    note: 'Diseño moderno y funcional' },
+
+  { id: 23, name: 'Cesta Abatible Ajustable',
+    category: 'Accesorios de Mueble Alto',
+    price: 29.99,
+    img: 'imgcat/caa.jpg',
+    note: 'Ajustable a diferentes tamaños de gabinetes' },
+
+  { id: 24, name: 'Bandeja de Platos',
+    category: 'Accesorios de Mueble Alto',
+    price: 14.5,
+    img: 'imgcat/bdplatos.jpg',
+    note: 'Diseño elegante y funcional' },
+  
+  { id: 25, name: 'Accesorio Abrir Cierre Lento',
+    category: 'Accesorios',
+    price: 19.9,
+    img: 'imgcat/aacl.jpg',
+    note: 'Acabado: Cromado' },
+  
+  {id: 26, name: 'Avento Cierre Lento',
+    category: 'Accesorios',
+    price: 27.9,
+    img: 'imgcat/avcl.jpg',
+    note: 'Acabado: plastico' },
+
+  { id: 27, name: 'Avento Puerta Doble',
+    category: 'Accesorios',
+    price: 49.9,
+    img: 'imgcat/avpd.jpg',
+    note: 'Acabado: Plastico' },
+
+  { id: 28, name: 'Avento Puerta Simple',
+    category: 'Accesorios',
+    price: 39.9,
+    img: 'imgcat/avps.jpg',
+    note: 'Acabado: Plastico' },
+
+  { id: 29, name: 'Avento Emportable',
+    category: 'Accesorios',
+    price: 59.9,
+    img: 'imgcat/ave.jpg',
+    note: 'Acabado: Negro Mate' },
+
+  { id: 30, name: 'Escurridor Exterior',
+    category: 'Accesorios',
+    price: 24.9,
+    img: 'imgcat/ese.jpg',
+    note: 'Acabado: Cromado' },
+  
+  { id: 31, name: 'Accesorio SS-304',
+    category: 'Accesorios',
+    price: 19.9,
+    img: 'imgcat/ass304.jpg',
+    note: 'Acero inoxidable' },
+
+  { id: 32, name: 'Tuvo de Acero Inoxidable',
+    category: 'Accesorios',
+    price: 29.9,
+    img: 'imgcat/tai.jpg',
+    note: 'Acero inoxidable' },
+
+  { id: 33, name: 'Porta Cubiertos',
+    category: 'Accesorios',
+    price: 14.9,
+    img: 'imgcat/pc.jpg',
+    note: 'Material resistente y fácil de limpiar' },
+
+  { id: 34, name: 'Torre Space Extraible',
+    category: 'Línea Premium',
+    price: 39.9,
+    img: 'imgcat/tosex.jpg',
+    note: 'Diseño moderno y funcional' },
+
+  { id: 35, name: 'Torre Extraible',
+    category: 'Línea Premium',
+    price: 49.9,
+    img: 'imgcat/tex.jpg',
+    note: 'Aluminio Antideslizante' },
+
+  { id: 36, name: 'Platero',
+    category: 'Línea Premium',
+    price: 59.9,
+    img: 'imgcat/platero.jpg',
+    note: 'Aluminio y Vidriox' },
+
+  { id: 37, name: 'Ollero',
+    category: 'Línea Premium',
+    price: 69.9,
+    img: 'imgcat/ollero.jpg',
+    note: 'Aluminio y Vidrio' },
+
+  { id: 38, name: 'Condimentero Lateral',
+    category: 'Línea Premium',
+    price: 79.9,
+    img: 'imgcat/condl.jpg',
+    note: 'Acero Inoxidable y Vidrio' },
+
+  { id: 39, name: 'Condimentero Central',
+    category: 'Línea Premium',
+    price: 89.9,
+    img: 'imgcat/condc.jpg',
+    note: 'Acero Inoxidable y Vidrio' },
+
+  { id: 40, name: 'Despensa Abatible',
+    category: 'Línea Premium',
+    price: 99.9,
+    img: 'imgcat/desabat.jpg',
+    note: 'Aluminio Antideslizante' },
+
+  { id: 41, name: 'Magic Corner (derecho)',
+    category: 'Línea Premium',
+    price: 109.9,
+    img: 'imgcat/mcd.jpg',
+    note: 'Aluminio y Vidrio' },
+
+  { id: 42, name: 'Magic Corner (izquierdo)',
+    category: 'Línea Premium',
+    price: 109.9,
+    img: 'imgcat/mci.jpg',
+    note: 'Aluminio y Vidrio' },
+
+  { id: 43, name: 'Super Magic Corner (De Vidrio)',
+    category: 'Línea Premium',
+    price: 119.9,
+    img: 'imgcat/supmc.jpg',
+    note: 'Aluminio y Vidrio' },
+
+  { id: 44, name: 'Cesta Abtible (aluminio)',
+    category: 'Línea Premium',
+    price: 129.9,
+    img: 'imgcat/cestaabt.jpg',
+    note: 'Aluminio y Vidrio' }, 
+
+  { id: 45, name: 'Porta Copas',
+    category: 'Línea Premium',
+    price: 139.9,
+    img: 'imgcat/portacopas.jpg',
+    note: 'Aluminio y Vidrio' },
+
+  { id: 46, name: 'Columna Extraible (de Vidrio)',
+    category: 'Línea Premium',
+    price: 149.9,
+    img: 'imgcat/colexvr.jpg',
+    note: 'Aluminio y Vidrio' },
+
+  { id: 47, name: 'Despensa Abatible (de Vidrio)',
+    category: 'Línea Premium',
+    price: 159.9,
+    img: 'imgcat/desabatv.jpg',
+    note: 'Aluminio y Vidrio' },
+
+  { id: 48, name: 'Cesta Abatible (de Vidrio)',
+    category: 'Línea Premium',
+    price: 169.9,
+    img: 'imgcat/cestaabtv.jpg',
+    note: 'Aluminio y Vidrio' },
+
+  { id: 49, name: 'Riel Cajon S',
+    category: 'Línea Premium',
+    price: 179.9,
+    img: 'imgcat/rielcajon.jpg',
+    note: 'Metal y Vidrio' },
+
+  {id: 50, name: 'Riel Cajon L',
+    category: 'Línea Premium',
+    price: 189.9,
+    img: 'imgcat/rielcajonl.jpg',
+    note: 'Metal y Vidrio' },
+
+  {id: 51, name: 'Dream Box S Front',
+    category: 'Línea Premium',
+    price: 199.9,
+    img: 'imgcat/dreamboxs.jpg',
+    note: 'Aluminio y Vidrio' },
+
+  {id: 52, name: 'Dream Box L Front',
+    category: 'Línea Premium',
+    price: 209.9,
+    img: 'imgcat/dreamboxl.jpg',
+    note: 'Aluminio y Vidrio' },
+
+  {id: 53, name: 'Riel Sincronizada',
+    category: 'Línea Premium',
+    price: 219.9,
+    img: 'imgcat/rielsincronizada.jpg',
+    note: 'Push Open y Soft Close' },
+    //ACCESORIOS DE DORMITORIO
+  {id: 54, name: 'Soporte Abatible',
+    category: 'Accesorios de Dormitorio',
+    price: 229.9,
+    img: 'imgcat/soporteabatible.jpg',
+    note: 'Aluminio y Vidrio' },
+
+  {id: 55, name: 'Esquinero Alfa Giratorio',
+    category: 'Accesorios de Dormitorio',
+    price: 239.9,
+    img: 'imgcat/esquinerogiratorio.jpg',
+    note: 'Aluminio' },
+
+  {id: 56, name: 'Soporte Extraible de Armadores',
+    category: 'Accesorios de Dormitorio',
+    price: 249.9,
+    img: 'imgcat/soporteextraible.jpg',
+    note: 'Aluminio' },
+
+  {id: 57, name: 'Colgador Doble para Pantalones',
+    category: 'Accesorios de Dormitorio',
+    price: 259.9,
+    img: 'imgcat/colgadordoble.jpg',
+    note: 'Aluminio'},
+
+  {id: 58, name: 'Colgador Simple para Pantalones',
+    category: 'Accesorios de Dormitorio',
+    price: 269.9,
+    img: 'imgcat/colgadorsimple.jpg',
+    note: 'Aluminio'},
+
+  {id: 59, name: 'Cesta Extraible Para Closet (Alambre)',
+    category: 'Accesorios de Dormitorio',
+    price: 279.9,
+    img: 'imgcat/cestaextraible.jpg',
+    note: 'Aluminio'},
+
+  {id: 60, name: 'Porta Pantalones Extraible',
+    category: 'Accesorios de Dormitorio',
+    price: 289.9,
+    img: 'imgcat/portapantalones.jpg',
+    note: 'Aluminio'},
+
+  {id: 61, name: 'Joyero Perla',
+    category: 'Accesorios de Dormitorio',
+    price: 299.9,
+    img: 'imgcat/joyeroperla.jpg',
+    note: 'Aluminio y Gamusa' }
+
+]
 const priceFormatter = new Intl.NumberFormat('es-EC', {
   style: 'currency',
   currency: 'USD',
@@ -111,9 +392,6 @@ function cardTemplate(product) {
   let badge = '';
   if (product.isNew) {
     badge = '<span class="badge badge-new">Nuevo</span>';
-  } else if (product.oldPrice) {
-    const discount = Math.round((1 - product.price / product.oldPrice) * 100);
-    badge = `<span class="badge badge-promo">-${discount}%</span>`;
   }
 
   return `
@@ -129,7 +407,6 @@ function cardTemplate(product) {
         <div class="product-foot">
           <div class="price">
             <span class="price-now">${formatPrice(product.price)}</span>
-            ${product.oldPrice ? `<span class="price-old">${formatPrice(product.oldPrice)}</span>` : ''}
           </div>
         </div>
       </div>
@@ -224,6 +501,140 @@ document.getElementById('clearFilters').addEventListener('click', () => {
 
 renderCatalog();
 
+const carousel = document.getElementById('carousel');
+const carouselTrack = document.getElementById('carouselTrack');
+const carouselDots = document.getElementById('carouselDots');
+const carouselPrev = document.getElementById('carouselPrev');
+const carouselNext = document.getElementById('carouselNext');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+const carouselProducts = [...new Map(products.map((product) => [product.category, product])).values()].slice(0, 6);
+let carouselIndex = 0;
+let carouselTimer = null;
+let touchStartX = null;
+
+carouselDots.innerHTML = carouselProducts
+  .map((product, index) => `<button class="carousel-dot" type="button" data-index="${index}" aria-label="Mostrar ${product.name}"></button>`)
+  .join('');
+
+function renderCarousel() {
+  const product = carouselProducts[carouselIndex];
+  carouselTrack.innerHTML = `
+    <article class="carousel-slide">
+      <div class="carousel-media">
+        <img src="${product.img}" alt="${product.name}">
+        <span class="carousel-counter">${carouselIndex + 1} / ${carouselProducts.length}</span>
+      </div>
+      <div class="carousel-info">
+        <span class="product-category">${product.category}</span>
+        <h3>${product.name}</h3>
+        <p>${product.note}</p>
+        <div class="carousel-foot">
+          <span class="price-now">${formatPrice(product.price)}</span>
+          <button class="btn btn-primary" type="button" data-tab-go="catalogo">Ver en el catálogo</button>
+        </div>
+      </div>
+    </article>
+  `;
+
+  carouselDots.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+    if (index === carouselIndex) {
+      dot.setAttribute('aria-current', 'true');
+    } else {
+      dot.removeAttribute('aria-current');
+    }
+  });
+}
+
+function showCarouselSlide(index) {
+  carouselIndex = (index + carouselProducts.length) % carouselProducts.length;
+  renderCarousel();
+}
+
+function stopCarousel() {
+  if (carouselTimer === null) return;
+  clearInterval(carouselTimer);
+  carouselTimer = null;
+}
+
+function startCarousel() {
+  if (carouselTimer !== null || reduceMotion.matches) return;
+  carouselTimer = setInterval(() => showCarouselSlide(carouselIndex + 1), 5000);
+}
+
+function restartCarousel() {
+  stopCarousel();
+  startCarousel();
+}
+
+function resumeCarousel() {
+  if (!carousel.matches(':hover') && !carousel.contains(document.activeElement)) startCarousel();
+}
+
+carouselPrev.addEventListener('click', () => {
+  showCarouselSlide(carouselIndex - 1);
+  restartCarousel();
+});
+
+carouselNext.addEventListener('click', () => {
+  showCarouselSlide(carouselIndex + 1);
+  restartCarousel();
+});
+
+carouselDots.addEventListener('click', (event) => {
+  const dot = event.target.closest('.carousel-dot');
+  if (!dot) return;
+  showCarouselSlide(Number(dot.dataset.index));
+  restartCarousel();
+});
+
+carousel.addEventListener('keydown', (event) => {
+  const moves = { ArrowRight: 1, ArrowLeft: -1 };
+  if (!(event.key in moves)) return;
+  event.preventDefault();
+  showCarouselSlide(carouselIndex + moves[event.key]);
+  restartCarousel();
+});
+
+carouselTrack.addEventListener('click', (event) => {
+  const button = event.target.closest('[data-tab-go]');
+  if (!button) return;
+  searchInput.value = carouselProducts[carouselIndex].name;
+  categorySelect.value = 'all';
+  sortSelect.value = 'relevance';
+  renderCatalog();
+  switchTab(button.dataset.tabGo);
+});
+
+carousel.addEventListener('mouseenter', stopCarousel);
+carousel.addEventListener('mouseleave', resumeCarousel);
+carousel.addEventListener('focusin', stopCarousel);
+carousel.addEventListener('focusout', (event) => {
+  if (!carousel.contains(event.relatedTarget)) setTimeout(resumeCarousel, 0);
+});
+
+carousel.addEventListener('touchstart', (event) => {
+  touchStartX = event.changedTouches[0].screenX;
+}, { passive: true });
+
+carousel.addEventListener('touchend', (event) => {
+  if (touchStartX === null) return;
+  const delta = event.changedTouches[0].screenX - touchStartX;
+  if (Math.abs(delta) > 40) {
+    showCarouselSlide(carouselIndex + (delta < 0 ? 1 : -1));
+    restartCarousel();
+  }
+  touchStartX = null;
+}, { passive: true });
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) stopCarousel();
+  else resumeCarousel();
+});
+
+renderCarousel();
+startCarousel();
+
 const chatLauncher = document.getElementById('chatLauncher');
 const chatPanel = document.getElementById('chatPanel');
 const closeChatBtn = document.getElementById('closeChat');
@@ -232,55 +643,47 @@ const chatQuick = document.getElementById('chatQuick');
 const chatForm = document.getElementById('chatForm');
 const chatInput = document.getElementById('chatInput');
 
-const defaultSuggestions = ['Ver promociones', 'Ver catálogo', 'Horario', 'Precios'];
+const defaultSuggestions = ['Ver catálogo', 'Horario', 'Precios'];
 let chatStarted = false;
 
 //CHATBOT RULES
 
 const chatRules = [
   {
-    keywords: ['promocion', 'promociones', 'oferta', 'ofertas', 'descuento', 'descuentos', 'rebaja', 'rebajas'],
-    reply:
-      'Tenemos ofertas activas con hasta 30% de descuento en herraduras decorativas, bisagras de acero y cerraduras multipunto. Puedes verlas en la pestaña Catálogo.',
-    suggestions: ['Ver catálogo', 'Horario', 'Precios'],
-  },
-
-  {keywords : ['herrajes', 'dispone', 'tienen', 'venden', 'productos'], reply : 'Que no vez la pagina?.', suggestions : ['Ver catálogo', 'Promociones', 'Precios']},
-  {
     keywords: ['bisagra', 'bisagras'],
     reply:
       'Tenemos bisagras de acero inoxidable desde $3,25, bisagras de libro desde $7,80 y bisagras hidráulicas desde $27,90. También vendemos kits de tornillos para instalación.',
-    suggestions: ['Ver catálogo', 'Promociones', 'Precios'],
+    suggestions: ['Ver catálogo', 'Precios', 'Garantía'],
   },
   {
     keywords: ['cerradura', 'cerraduras', 'candado', 'candados', 'llave', 'seguridad'],
     reply:
       'En cerraduras tienes opciones desde $22,30 (candado de alta seguridad), la cerradura multipunto a $49,90 y la cerradura electrónica con teclado a $89,99.',
-    suggestions: ['Ver catálogo', 'Promociones', 'Garantía'],
+    suggestions: ['Ver catálogo', 'Garantía', 'Precios'],
   },
   {
     keywords: ['manija', 'manijas', 'picaporte', 'tirador'],
     reply:
-      'Nuestras manijas van desde $13,60 (redonda de latón) y $18,75 (palanca negra mate, en promoción). Todas incluyen tornillos de instalación.',
-    suggestions: ['Ver catálogo', 'Promociones', 'Precios'],
+       'Nuestras manijas van desde $13,60 (redonda de latón) y $18,75 (palanca negra mate). Todas incluyen tornillos de instalación.',
+    suggestions: ['Ver catálogo', 'Precios', 'Garantía'],
   },
   {
     keywords: ['herradura', 'herraduras'],
     reply:
-      'Las herraduras decorativas están desde $8,50 con descuento. También tenemos herradura magnética, de pared vintage y pasadores de embutir. Son ideales para puertas y decoración.',
-    suggestions: ['Ver catálogo', 'Promociones', 'Horario'],
+       'Las herraduras decorativas están desde $8,50. También tenemos herradura magnética, de pared vintage y pasadores de embutir. Son ideales para puertas y decoración.',
+    suggestions: ['Ver catálogo', 'Precios', 'Horario'],
   },
   {
     keywords: ['tornillo', 'tornillos', 'tornilleria'],
     reply:
-      'El kit de 50 tornillos para bisagras cuesta $6,90 (antes $9,50). También contamos con tornillería suelta; dime qué medida necesitas y te asesoramos.',
+       'El kit de 50 tornillos para bisagras cuesta $6,90. También contamos con tornillería suelta; dime qué medida necesitas y te asesoramos.',
     suggestions: ['Ver catálogo', 'Precios', 'Asesor'],
   },
   {
     keywords: ['precio', 'precios', 'cuanto cuesta', 'cuanto vale', 'costo', 'costos', 'valor'],
     reply:
       'Nuestros precios van desde $3,25 hasta $89,99 según el producto. Todos incluyen IVA y tienen garantía de 6 meses. Puedes ver cada precio en la pestaña Catálogo.',
-    suggestions: ['Ver catálogo', 'Promociones', 'Métodos de pago'],
+    suggestions: ['Ver catálogo', 'Garantía', 'Métodos de pago'],
   },
   {
     keywords: ['horario', 'horarios', 'abierto', 'abren', 'cierran', 'atienden', 'atencion'],
@@ -310,7 +713,7 @@ const chatRules = [
     keywords: ['catalogo', 'productos', 'que venden', 'que tienen', 'inventario', 'modelos'],
     reply:
       'En el catálogo encontrarás bisagras, cerraduras, manijas, herraduras decorativas, tornillería y accesorios. Puedes filtrar por categoría, buscar por nombre y ordenar por precio.',
-    suggestions: ['Promociones', 'Precios', 'Horario'],
+    suggestions: ['Precios', 'Horario', 'Garantía'],
     action: 'catalogo',
   },
   {
@@ -322,7 +725,7 @@ const chatRules = [
   {
     keywords: ['hola', 'buenas', 'buenos dias', 'buenas tardes', 'buenas noches', 'que tal', 'saludos', 'hey'],
     reply:
-      '¡Hola! Soy Herra, tu asistente virtual. Puedo ayudarte con productos, precios, promociones y horarios. ¿Qué deseas saber?',
+       '¡Hola! Soy Herra, tu asistente virtual. Puedo ayudarte con productos, precios, horarios y garantías. ¿Qué deseas saber?',
     suggestions: defaultSuggestions,
   },
   {
@@ -333,7 +736,7 @@ const chatRules = [
   {
     keywords: ['adios', 'chao', 'hasta luego', 'nos vemos', 'bye'],
     reply: '¡Hasta pronto! Gracias por visitar Herraduras. Que tengas un buen día.',
-    suggestions: ['Ver promociones', 'Ver catálogo'],
+    suggestions: ['Ver catálogo', 'Horario'],
   },
 ];
 
@@ -407,7 +810,7 @@ function sendChatMessage(rawText) {
     hideTyping();
     const reply = rule
       ? rule.reply
-      : 'No estoy seguro de haber entendido. Puedo ayudarte con horarios, precios, productos y promociones. También puedes pedir hablar con un asesor.';
+      : 'No estoy seguro de haber entendido. Puedo ayudarte con horarios, precios, productos y garantías. También puedes pedir hablar con un asesor.';
     addMessage(reply, 'bot');
     setQuickReplies(rule && rule.suggestions ? rule.suggestions : defaultSuggestions);
 
@@ -425,7 +828,7 @@ function openChat() {
   if (!chatStarted) {
     chatStarted = true;
     addMessage(
-      '¡Hola! Soy Herra, tu asistente virtual de Herraduras. Puedo ayudarte con productos, precios, horarios y promociones. ¿Qué necesitas?',
+      '¡Hola! Soy Herra, tu asistente virtual de Herraduras. Puedo ayudarte con productos, precios, horarios y garantías. ¿Qué necesitas?',
       'bot'
     );
     setQuickReplies(defaultSuggestions);

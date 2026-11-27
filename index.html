@@ -14,7 +14,7 @@
     <div class="container header-inner">
       <a class="brand" href="#" aria-label="Herraduras, inicio">
         <span class="brand-mark" aria-hidden="true">
-        <img class="logoimg" src="logo.png" alt="Logo de Herrajes Rosita" width="40" height="40">
+        <img class="logoimg" src="logo.jpg" alt="Logo de Herrajes Rosita" width="40" height="40">
         </span>
         <span class="brand-text">
           Herrajes Rosita
@@ -35,11 +35,26 @@
 
   <main class="container">
     <section class="panel" id="panel-nosotros" role="tabpanel" aria-labelledby="tab-nosotros">
-      <div class="about-hero">
-        <span class="eyebrow">Sobre nosotros</span>
-        <h1>Más de 10 años abriendo puertas con seguridad y buen diseño.</h1>
-        <p>En Herrajes Rosita somos especialistas en herrajes, bisagras, cerraduras y accesorios para puertas y cocinas. Atendemos al profesional de la madera y a cada cliente que busca calidad, buen precio y asesoría cercana.</p>
-      </div>
+      <section class="showcase" aria-labelledby="showcaseTitle">
+        <div class="showcase-head">
+          <div>
+            <span class="eyebrow eyebrow-dark">En nuestra tienda</span>
+            <h2 id="showcaseTitle">Productos que hacen la diferencia</h2>
+          </div>
+          <div class="carousel-controls">
+            <button class="carousel-btn" id="carouselPrev" type="button" aria-label="Producto anterior">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button class="carousel-btn" id="carouselNext" type="button" aria-label="Producto siguiente">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="carousel" id="carousel" role="region" aria-roledescription="carrusel" aria-label="Productos destacados" tabindex="0">
+          <div class="carousel-track" id="carouselTrack" aria-live="polite"></div>
+        </div>
+        <div class="carousel-dots" id="carouselDots" role="group" aria-label="Elegir producto destacado"></div>
+      </section>
 
       <div class="trust">
         <div class="trust-item">
@@ -62,15 +77,32 @@
         </div>
       </div>
 
-      <div class="about-grid">
-        <article class="about-card" id="historia">
-          <h2>Nuestra historia</h2>
-          <p>Empezamos hace más de una década como un pequeño local de herrajes. Hoy seguimos creciendo con el mismo compromiso: ofrecer productos duraderos y recomendaciones honestas para cada proyecto.</p>
+      <div class="feature-grid">
+        <article class="vision" id="historia" aria-labelledby="historiaTitle">
+          <span class="vision-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </span>
+          <div class="vision-content">
+            <span class="eyebrow">Nuestra historia</span>
+            <h2 id="historiaTitle">Más de una década abriendo puertas</h2>
+            <p>Empezamos hace <mark>más de una década</mark> como un <mark>pequeño local de herrajes</mark>. Hoy seguimos creciendo con el mismo compromiso: ofrecer <mark>productos duraderos</mark> y <mark>recomendaciones honestas</mark> para <mark>cada proyecto</mark>.</p>
+          </div>
         </article>
+
+        <section class="vision" aria-labelledby="visionTitle">
+          <span class="vision-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+          </span>
+          <div class="vision-content">
+            <span class="eyebrow">Nuestra visión</span>
+            <h2 id="visionTitle">Miramos más lejos, cada día</h2>
+            <p>Ser una <mark>empresa líder y reconocida</mark> en el mercado ecuatoriano por la comercialización de herrajes, cerraduras y accesorios de <mark>alta calidad</mark>, destacándonos por nuestra <mark>innovación</mark>, variedad de productos, <mark>precios competitivos</mark> y <mark>excelencia en la atención al cliente</mark>.</p>
+            <p>Aspiramos a fortalecer nuestra <mark>presencia en el mercado físico y digital</mark>, ofreciendo <mark>soluciones confiables</mark> que contribuyan a la <mark>seguridad, funcionalidad y estética</mark> de los hogares y negocios de nuestros clientes.</p>
+          </div>
+        </section>
       </div>
     </section>
-
-<!--- Catoalogo-->
+<!-- CATÁLOGO -->
     <section class="panel" id="panel-catalogo" role="tabpanel" aria-labelledby="tab-catalogo" hidden>
       <div class="section-head">
         <div>
@@ -111,14 +143,14 @@
     </section>
   </main>
 
-<!--Pie de pagina-->
+<!-- pie de pagina -->
   
   <footer class="site-footer">
     <div class="container footer-grid"> 
       <div>
         <a class="brand" href="#" aria-label="Herraduras, inicio">
           <span class="brand-mark" aria-hidden="true">
-            <img class="logoimg" src="logo.png" alt="Herrajes Rosita" width="50" height="40">
+            <img class="logoimg" src="logo.jpg" alt="Herrajes Rosita" width="50" height="40">
           </span>
           <span class="brand-text">Herrajes<small>Herrajes &amp; cerraduras</small></span>
         </a>
@@ -154,7 +186,7 @@
       <span>Precios en USD · IVA incluido</span>
     </div>
   </footer>
-<!--Chat Boot-->  
+<!-- Chatbot -->
   <button class="chat-launcher" id="chatLauncher" type="button" aria-label="Abrir chat de ayuda" aria-expanded="false" aria-controls="chatPanel">
     <svg class="icon-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9.6 9.6 0 0 1-3.3-.6L3 21l1.7-5a8.1 8.1 0 0 1-.7-3.4 8.4 8.4 0 0 1 9-8.4 8.3 8.3 0 0 1 8 7.3Z"/>
