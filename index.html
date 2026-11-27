@@ -101,6 +101,27 @@
           </div>
         </section>
       </div>
+
+      <section class="locations" aria-labelledby="locationsTitle">
+        <div class="showcase-head">
+          <div>
+            <span class="eyebrow eyebrow-dark">Encuéntranos</span>
+            <h2 id="locationsTitle">Nuestras sucursales</h2>
+          </div>
+          <div class="carousel-controls">
+            <button class="carousel-btn" id="branchPrev" type="button" aria-label="Sucursal anterior">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button class="carousel-btn" id="branchNext" type="button" aria-label="Sucursal siguiente">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="carousel" id="branchCarousel" role="region" aria-roledescription="carrusel" aria-label="Direcciones de sucursales" tabindex="0">
+          <div class="carousel-track" id="branchTrack" aria-live="polite"></div>
+        </div>
+        <div class="carousel-dots" id="branchDots" role="group" aria-label="Elegir sucursal"></div>
+      </section>
     </section>
 <!-- CATÁLOGO -->
     <section class="panel" id="panel-catalogo" role="tabpanel" aria-labelledby="tab-catalogo" hidden>

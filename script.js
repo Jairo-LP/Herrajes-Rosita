@@ -501,29 +501,130 @@ document.getElementById('clearFilters').addEventListener('click', () => {
 
 renderCatalog();
 
-const carousel = document.getElementById('carousel');
-const carouselTrack = document.getElementById('carouselTrack');
-const carouselDots = document.getElementById('carouselDots');
-const carouselPrev = document.getElementById('carouselPrev');
-const carouselNext = document.getElementById('carouselNext');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+function createCarousel({ root, track, dots, prev, next, items, label, slide, interval }) {
+  let index = 0;
+  let timer = null;
+  let touchStartX = null;
+
+  dots.innerHTML = items
+    .map((item, position) => `<button class="carousel-dot" type="button" data-index="${position}" aria-label="Mostrar ${label(item)}"></button>`)
+    .join('');
+
+  function render() {
+    track.innerHTML = slide(items[index], index, items.length);
+    dots.querySelectorAll('.carousel-dot').forEach((dot, position) => {
+      if (position === index) {
+        dot.setAttribute('aria-current', 'true');
+      } else {
+        dot.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  function show(position) {
+    index = (position + items.length) % items.length;
+    render();
+  }
+
+  function stop() {
+    if (timer === null) return;
+    clearInterval(timer);
+    timer = null;
+  }
+
+  function start() {
+    if (timer !== null || reduceMotion.matches) return;
+    timer = setInterval(() => show(index + 1), interval);
+  }
+
+  function restart() {
+    stop();
+    start();
+  }
+
+  function resume() {
+    if (!root.matches(':hover') && !root.contains(document.activeElement)) start();
+  }
+
+  prev.addEventListener('click', () => {
+    show(index - 1);
+    restart();
+  });
+
+  next.addEventListener('click', () => {
+    show(index + 1);
+    restart();
+  });
+
+  dots.addEventListener('click', (event) => {
+    const dot = event.target.closest('.carousel-dot');
+    if (!dot) return;
+    show(Number(dot.dataset.index));
+    restart();
+  });
+
+  root.addEventListener('keydown', (event) => {
+    const moves = { ArrowRight: 1, ArrowLeft: -1 };
+    if (!(event.key in moves)) return;
+    event.preventDefault();
+    show(index + moves[event.key]);
+    restart();
+  });
+
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', resume);
+  root.addEventListener('focusin', stop);
+  root.addEventListener('focusout', (event) => {
+    if (!root.contains(event.relatedTarget)) setTimeout(resume, 0);
+  });
+
+  root.addEventListener('touchstart', (event) => {
+    touchStartX = event.changedTouches[0].screenX;
+  }, { passive: true });
+
+  root.addEventListener('touchend', (event) => {
+    if (touchStartX === null) return;
+    const delta = event.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(delta) > 40) {
+      show(index + (delta < 0 ? 1 : -1));
+      restart();
+    }
+    touchStartX = null;
+  }, { passive: true });
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stop();
+    else resume();
+  });
+
+  render();
+  start();
+
+  return {
+    items,
+    get index() {
+      return index;
+    },
+  };
+}
+
 const carouselProducts = [...new Map(products.map((product) => [product.category, product])).values()].slice(0, 6);
-let carouselIndex = 0;
-let carouselTimer = null;
-let touchStartX = null;
-
-carouselDots.innerHTML = carouselProducts
-  .map((product, index) => `<button class="carousel-dot" type="button" data-index="${index}" aria-label="Mostrar ${product.name}"></button>`)
-  .join('');
-
-function renderCarousel() {
-  const product = carouselProducts[carouselIndex];
-  carouselTrack.innerHTML = `
+const productCarousel = createCarousel({
+  root: document.getElementById('carousel'),
+  track: document.getElementById('carouselTrack'),
+  dots: document.getElementById('carouselDots'),
+  prev: document.getElementById('carouselPrev'),
+  next: document.getElementById('carouselNext'),
+  items: carouselProducts,
+  label: (product) => product.name,
+  interval: 5000,
+  slide: (product, index, total) => `
     <article class="carousel-slide">
       <div class="carousel-media">
         <img src="${product.img}" alt="${product.name}">
-        <span class="carousel-counter">${carouselIndex + 1} / ${carouselProducts.length}</span>
+        <span class="carousel-counter">${index + 1} / ${total}</span>
       </div>
       <div class="carousel-info">
         <span class="product-category">${product.category}</span>
@@ -535,105 +636,83 @@ function renderCarousel() {
         </div>
       </div>
     </article>
-  `;
-
-  carouselDots.querySelectorAll('.carousel-dot').forEach((dot, index) => {
-    if (index === carouselIndex) {
-      dot.setAttribute('aria-current', 'true');
-    } else {
-      dot.removeAttribute('aria-current');
-    }
-  });
-}
-
-function showCarouselSlide(index) {
-  carouselIndex = (index + carouselProducts.length) % carouselProducts.length;
-  renderCarousel();
-}
-
-function stopCarousel() {
-  if (carouselTimer === null) return;
-  clearInterval(carouselTimer);
-  carouselTimer = null;
-}
-
-function startCarousel() {
-  if (carouselTimer !== null || reduceMotion.matches) return;
-  carouselTimer = setInterval(() => showCarouselSlide(carouselIndex + 1), 5000);
-}
-
-function restartCarousel() {
-  stopCarousel();
-  startCarousel();
-}
-
-function resumeCarousel() {
-  if (!carousel.matches(':hover') && !carousel.contains(document.activeElement)) startCarousel();
-}
-
-carouselPrev.addEventListener('click', () => {
-  showCarouselSlide(carouselIndex - 1);
-  restartCarousel();
+  `,
 });
 
-carouselNext.addEventListener('click', () => {
-  showCarouselSlide(carouselIndex + 1);
-  restartCarousel();
-});
-
-carouselDots.addEventListener('click', (event) => {
-  const dot = event.target.closest('.carousel-dot');
-  if (!dot) return;
-  showCarouselSlide(Number(dot.dataset.index));
-  restartCarousel();
-});
-
-carousel.addEventListener('keydown', (event) => {
-  const moves = { ArrowRight: 1, ArrowLeft: -1 };
-  if (!(event.key in moves)) return;
-  event.preventDefault();
-  showCarouselSlide(carouselIndex + moves[event.key]);
-  restartCarousel();
-});
-
-carouselTrack.addEventListener('click', (event) => {
+document.getElementById('carouselTrack').addEventListener('click', (event) => {
   const button = event.target.closest('[data-tab-go]');
   if (!button) return;
-  searchInput.value = carouselProducts[carouselIndex].name;
+  const product = productCarousel.items[productCarousel.index];
+  searchInput.value = product.name;
   categorySelect.value = 'all';
   sortSelect.value = 'relevance';
   renderCatalog();
   switchTab(button.dataset.tabGo);
 });
 
-carousel.addEventListener('mouseenter', stopCarousel);
-carousel.addEventListener('mouseleave', resumeCarousel);
-carousel.addEventListener('focusin', stopCarousel);
-carousel.addEventListener('focusout', (event) => {
-  if (!carousel.contains(event.relatedTarget)) setTimeout(resumeCarousel, 0);
+const branches = [
+  {
+    name: 'Matriz',
+    address: 'Av. Mariscal Sucre y Carancqui, Local 1',
+    address2: '0982441399',
+    image: 'ImgSucursales/Magdalena.jpg',
+    map: 'https://maps.app.goo.gl/hhgFxztEF9j22GHK7',
+  },
+  {
+    name: 'Sucursal 1',
+    address: 'La Bretaña, Av. Pedro Vicente y La Cocha',
+    address2: '0960758920',
+    image: 'ImgSucursales/Bretaña.jpg',
+    map: 'https://maps.app.goo.gl/L6wbarswuFd9Bnmw6',
+  },
+  {
+    name: 'Sucursal 2',
+    address: 'Guamani, Av Pedro Vicente M. y S64 Patricio Romero',
+    address2: '0960758964',
+    image: 'ImgSucursales/Guamani.jpg',
+    map: 'https://maps.app.goo.gl/sokw4p3P1anDVnAH8',
+  },
+  {
+    name: 'Sucursal 3',
+    address: 'La Floresta N24b, Madrid E14-21 y Lugo',
+    address2: '0959445170',
+    image: 'ImgSucursales/logo.jpg',
+    map: 'https://maps.app.goo.gl/BuFEehruW4F3MazTA',
+  },
+].map((branch) => ({
+  image: 'imgcat/placeholder.jpg',
+  phoneHref: `tel:+593${branch.address2.slice(1)}`,
+  ...branch,
+}));
+
+createCarousel({
+  root: document.getElementById('branchCarousel'),
+  track: document.getElementById('branchTrack'),
+  dots: document.getElementById('branchDots'),
+  prev: document.getElementById('branchPrev'),
+  next: document.getElementById('branchNext'),
+  items: branches,
+  label: (branch) => branch.name,
+  interval: 6000,
+  slide: (branch, index, total) => `
+    <article class="carousel-slide branch-slide">
+      <div class="branch-photo">
+        <img src="${branch.image}" alt="Foto del establecimiento: ${branch.name}">
+        <span class="branch-photo-hint">Foto del establecimiento</span>
+        <span class="carousel-counter">${index + 1} / ${total}</span>
+      </div>
+      <div class="carousel-info">
+        <span class="product-category">Dirección</span>
+        <h3>${branch.name}</h3>
+        <p>${branch.address}</p>
+        <p class="branch-phone"><a href="${branch.phoneHref}">${branch.address2}</a></p>
+        <div class="carousel-foot">
+          <a class="btn btn-primary" href="${branch.map}" target="_blank" rel="noopener noreferrer">Cómo llegar</a>
+        </div>
+      </div>
+    </article>
+  `,
 });
-
-carousel.addEventListener('touchstart', (event) => {
-  touchStartX = event.changedTouches[0].screenX;
-}, { passive: true });
-
-carousel.addEventListener('touchend', (event) => {
-  if (touchStartX === null) return;
-  const delta = event.changedTouches[0].screenX - touchStartX;
-  if (Math.abs(delta) > 40) {
-    showCarouselSlide(carouselIndex + (delta < 0 ? 1 : -1));
-    restartCarousel();
-  }
-  touchStartX = null;
-}, { passive: true });
-
-document.addEventListener('visibilitychange', () => {
-  if (document.hidden) stopCarousel();
-  else resumeCarousel();
-});
-
-renderCarousel();
-startCarousel();
 
 const chatLauncher = document.getElementById('chatLauncher');
 const chatPanel = document.getElementById('chatPanel');
